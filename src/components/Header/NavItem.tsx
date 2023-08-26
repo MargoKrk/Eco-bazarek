@@ -10,7 +10,7 @@ export const NavItem = (props: NavItemProps) => {
 const {children, to, ...other} = props;
 
   return (
-    <li {...other}>
+    <li className="p-6 active:text-[#FCFE7F]" {...other}>
       <NavLink to={to}>{children}</NavLink>
     </li>
   );
