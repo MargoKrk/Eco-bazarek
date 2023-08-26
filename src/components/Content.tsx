@@ -13,6 +13,7 @@ export const Content = (props: ContentProps) => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
+    {children}
     </main>
   );
 };
