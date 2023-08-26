@@ -3,7 +3,14 @@ import ReactDOM from "react-dom/client";
 import Root from "./Root.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { HomePage, AboutUsPage, ProductsPage, ContactPage } from "./pages/index.tsx";
+import {
+  HomePage,
+  AboutUsPage,
+  ProductsPage,
+  ContactPage,
+  TermOfUsePage,
+  PrivacyPolicyPage,
+} from "./pages/index.tsx";
 
 const router = createBrowserRouter([
   {
@@ -12,21 +19,29 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage/>,
+        element: <HomePage />,
       },
       {
         path: "/about-us",
-        element: <AboutUsPage/>,
+        element: <AboutUsPage />,
       },
       {
         path: "/products",
-        element: <ProductsPage/>,
+        element: <ProductsPage />,
       },
       {
         path: "/contact",
-        element: <ContactPage/>,
+        element: <ContactPage />,
       },
-    ]
+      {
+        path: "/term-of-use",
+        element: <TermOfUsePage />,
+      },
+      {
+        path: "/privacy policy",
+        element: <PrivacyPolicyPage />,
+      },
+    ],
   },
 ]);
 
