@@ -1,5 +1,5 @@
 import { Content } from "../components"
 
 export const AboutUsPage = () => {
-    return <Content>About us page</Content>
+    return <Content title="O nas">About us page</Content>
 }
