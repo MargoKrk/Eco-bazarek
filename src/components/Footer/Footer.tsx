@@ -1,4 +1,3 @@
-import { NavLink } from "react-router-dom";
 import { NavItem } from "../Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,6 +8,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { MediaItem } from "./MediaItem";
+import { Subscribe } from "./Subscribe";
 
 export const Footer = () => {
   return (
@@ -17,8 +17,9 @@ export const Footer = () => {
         <div>obrazek</div>
         <h1 className="uppercase">subskrybuj</h1>
         <h3>Bądź pierwszym, który się dowie o naszych produktach</h3>
-        <input></input>
-        <button className="bg-[#46AA42]">subskrybuj</button>
+
+        <Subscribe />
+        
           <ul className="flex">
             <MediaItem to="https://pl-pl.facebook.com/">
               <FontAwesomeIcon icon={faFacebook} />
@@ -44,6 +45,7 @@ export const Footer = () => {
             <NavItem to="/term-of-use">Warunki użytkowania</NavItem>
             <NavItem to="/privacy policy">Polityka prywatności</NavItem>
           </ul>
+          
       </footer>
     </>
   );
