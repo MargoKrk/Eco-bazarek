@@ -9,9 +9,9 @@ export const Content = (props: ContentProps) => {
   const { children, title, ...other } = props;
 
   return (
-    <main {...other}>
+    <main {...other} className="container pt-[64px] mx-auto ">
       <Helmet>
-        <title>{title}</title>
+        <title >{title}</title>
       </Helmet>
     {children}
     </main>

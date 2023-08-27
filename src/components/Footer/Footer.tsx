@@ -15,8 +15,8 @@ export const Footer = () => {
     <>
       <footer className="flex flex-col justify-center items-center h-[514px] bg-[#412F22] text-white">
         <div>obrazek</div>
-        <h1 className="uppercase">subskrybuj</h1>
-        <h3>Bądź pierwszym, który się dowie o naszych produktach</h3>
+        <h3 className="uppercase">subskrybuj</h3>
+        <p>Bądź pierwszym, który się dowie o naszych produktach</p>
 
         <Subscribe />
         
@@ -45,7 +45,7 @@ export const Footer = () => {
             <NavItem to="/term-of-use">Warunki użytkowania</NavItem>
             <NavItem to="/privacy policy">Polityka prywatności</NavItem>
           </ul>
-          
+
       </footer>
     </>
   );
