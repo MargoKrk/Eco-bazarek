@@ -1,6 +1,5 @@
 import { NavItem } from "../Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Envelope from "../../images/evelop.png";
 import {
   faFacebook,
   faInstagram,

@@ -12,7 +12,7 @@ function Root() {
         <Outlet />
         <Footer />
       </HelmetProvider>
-      <ToastContainer />
+      <ToastContainer position="bottom-right"/>
     </>
   );
 }

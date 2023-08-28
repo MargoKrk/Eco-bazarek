@@ -1,25 +1,28 @@
-import { FormEvent, InputHTMLAttributes, useEffect, useState } from "react";
+import { FormEvent, useState } from "react";
 import { HOST } from "../../../data/data";
+import { toast } from "react-toastify";
 
 export const Subscribe = () => {
   const [email, setEmail] = useState<string>("");
 
+  const notify = () => toast("now you are subscribing us");
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
-    const emailAddress = {email};
-
-    console.log(emailAddress)
-
+    console.log({email})
+    
     fetch(HOST, {
         method: "POST",
-        body: JSON.stringify(emailAddress),
+        body: JSON.stringify({email}),
         headers: {
             "Content-Type": "application/json"
         }
     }).then(response => {
         if(response.ok) {
             console.log("now you are subscribing it")
+            setEmail(" ")
+            notify()
             return response.json()
         }
         throw Error(`${response.status} - ${response.statusText}`);
@@ -33,7 +36,7 @@ export const Subscribe = () => {
     <>
       <form className="pt-[40px]" onSubmit={handleSubmit}>
         <input
-          type="text"
+          type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           className="w-[420px] h-[42px] mr-[26px] text-black"

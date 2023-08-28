@@ -1,5 +1,5 @@
 import { NavItem } from "./NavItem";
-import { NavIcon } from "./NavIcon";
+import { NavIcon } from "./NavIcons";
 import { Logo } from "./Logo";
 
 export const Header = () => {
