@@ -10,6 +10,7 @@ import {
   ContactPage,
   TermOfUsePage,
   PrivacyPolicyPage,
+  ProfilePage,
 } from "./pages/index.tsx";
 
 const router = createBrowserRouter([
@@ -41,6 +42,11 @@ const router = createBrowserRouter([
         path: "/privacy policy",
         element: <PrivacyPolicyPage />,
       },
+      {
+        path: "/profile",
+        element: <ProfilePage />,
+      },
+
     ],
   },
 ]);
