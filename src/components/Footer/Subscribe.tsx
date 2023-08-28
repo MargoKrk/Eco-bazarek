@@ -1,5 +1,5 @@
 import { FormEvent, InputHTMLAttributes, useEffect, useState } from "react";
-import { HOST } from "../../data/data";
+import { HOST } from "../../../data/data";
 
 export const Subscribe = () => {
   const [email, setEmail] = useState<string>("");
@@ -7,15 +7,19 @@ export const Subscribe = () => {
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
+    const emailAddress = {email};
+
+    console.log(emailAddress)
+
     fetch(HOST, {
         method: "POST",
-        body: JSON.stringify(email),
+        body: JSON.stringify(emailAddress),
         headers: {
             "Content-Type": "application/json"
         }
     }).then(response => {
         if(response.ok) {
-            console.log(response)
+            console.log("now you are subscribing it")
             return response.json()
         }
         throw Error(`${response.status} - ${response.statusText}`);
