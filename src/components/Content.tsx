@@ -9,7 +9,7 @@ export const Content = (props: ContentProps) => {
   const { children, title, ...other } = props;
 
   return (
-    <main {...other} className="container pt-[64px] mx-auto ">
+    <main {...other} className="container mx-auto my-8">
       <Helmet>
         <title >{title}</title>
       </Helmet>

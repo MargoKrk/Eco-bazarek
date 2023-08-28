@@ -3,7 +3,7 @@ import { Content } from "../components";
 export const TermOfUsePage = () => {
   return (
     <Content title="Warunki użytkowania" className="">
-      <h1 className="pt-[72px] pb-10">Warunki użytkowania</h1>
+      <h1 className="pb-10">Warunki użytkowania</h1>
       <p className="text-justify">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel
         ligula mauris. In ultricies mi sed diam ultricies ornare. Ut quis sapien

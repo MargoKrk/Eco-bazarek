@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 
 export const Header = () => {
   return (
-    <header className="fixed w-screen p-4 flex  justify-between items-center h-[64px] bg-[#46AA42] text-white">
+    <header className="sticky p-4 flex justify-between items-center h-[64px] bg-[#46AA42] text-white">
       <Logo />
 
       <ul className="flex">

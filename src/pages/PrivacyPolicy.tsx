@@ -3,7 +3,7 @@ import { Content } from "../components";
 export const PrivacyPolicyPage = () => {
   return (
     <Content title="Polityka prywatności">
-      <h1 className="pt-[72px] pb-10">Polityka prywatności</h1>
+      <h1 className="pb-10">Polityka prywatności</h1>
       <p className="text-justify">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel
         ligula mauris. In ultricies mi sed diam ultricies ornare. Ut quis sapien

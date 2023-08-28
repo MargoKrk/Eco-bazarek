@@ -1,4 +1,4 @@
-import  Wheat from './icons8-wheat-24.png'
+import  Wheat from '../../images/icons8-wheat-24.png'
 
 export const Logo = () => {
   return (
