@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { HOST } from "../../../data/data";
 import { toast } from "react-toastify";
 import { Button } from "../Button";
+import { TextField } from "../index";
 
 export const Subscribe = () => {
   const [email, setEmail] = useState<string>("");
@@ -36,12 +37,9 @@ export const Subscribe = () => {
   return (
     <>
       <form className="pt-[40px]" onSubmit={handleSubmit}>
-        <input
-          type="email"
+        <TextField type="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="w-[420px] h-[42px] mr-[26px] text-black"
-        ></input>
+          onChange={(e) => setEmail(e.target.value)}></TextField>
         <Button variant={"contained"}>subskrybuj</Button>
       </form>
     </>

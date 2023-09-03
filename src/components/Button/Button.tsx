@@ -3,7 +3,7 @@ import "./Button.css"
 import clsx from "clsx"
 
 export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
-    variant: "contained" | "text"
+    variant?: "contained" | "text"
 }
 
 export const Button = (props: ButtonProps) => {
