@@ -15,7 +15,7 @@ export const NavIcons = () => {
         <SparklesIcon className="w-6 h-6 " />
       </li>
 
-      <NavItem to="/about-us"><UserIcon className="w-6 h-6 " /></NavItem>
+      <NavItem to="/profile"><UserIcon className="w-6 h-6 " /></NavItem>
 
     </ul>
   );

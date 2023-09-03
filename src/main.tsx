@@ -11,6 +11,7 @@ import {
   TermOfUsePage,
   PrivacyPolicyPage,
   ProfilePage,
+  NotFoundPage,
 } from "./pages/index.tsx";
 
 const router = createBrowserRouter([
@@ -46,7 +47,10 @@ const router = createBrowserRouter([
         path: "/profile",
         element: <ProfilePage />,
       },
-
+      {
+        path: "*",
+        element: <NotFoundPage />,
+      },
     ],
   },
 ]);

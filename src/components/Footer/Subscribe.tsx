@@ -21,8 +21,8 @@ export const Subscribe = () => {
             "Content-Type": "application/json"
         }
     }).then(response => {
-        if(response.ok) {
-            console.log("now you are subscribing it")
+        if(email) {
+            console.log("now you are subscribing us!")
             setEmail(" ")
             notify()
             return response.json()
