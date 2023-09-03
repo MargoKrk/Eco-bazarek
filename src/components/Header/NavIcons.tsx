@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/24/solid";
 import { NavItem } from ".";
 
-export const NavIcon = () => {
+export const NavIcons = () => {
   return (
     <ul className="flex">
       <li className="p-5">

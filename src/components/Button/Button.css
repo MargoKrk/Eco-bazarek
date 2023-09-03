@@ -1,0 +1,11 @@
+.Button-base {
+    @apply uppercase px-6 h-[42px] rounded-[2px]
+}
+
+.Button-base.contained {
+    @apply bg-[#46AA42]
+}
+
+.Button-base.text {
+    @apply text-black
+}

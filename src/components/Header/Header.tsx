@@ -1,5 +1,5 @@
 import { NavItem } from "./NavItem";
-import { NavIcon } from "./NavIcons";
+import { NavIcons } from "./NavIcons";
 import { Logo } from "./Logo";
 
 export const Header = () => {
@@ -14,7 +14,7 @@ export const Header = () => {
         <NavItem to="/contact">Kontakt</NavItem>
       </ul>
 
-      <NavIcon />
+      <NavIcons />
     </header>
   );
 };

@@ -1,6 +1,7 @@
 import { FormEvent, useState } from "react";
 import { HOST } from "../../../data/data";
 import { toast } from "react-toastify";
+import { Button } from "../Button";
 
 export const Subscribe = () => {
   const [email, setEmail] = useState<string>("");
@@ -41,9 +42,7 @@ export const Subscribe = () => {
           onChange={(e) => setEmail(e.target.value)}
           className="w-[420px] h-[42px] mr-[26px] text-black"
         ></input>
-        <button className="uppercase bg-[#46AA42] px-6 h-[42px]">
-          subskrybuj
-        </button>
+        <Button variant={"contained"}>subskrybuj</Button>
       </form>
     </>
   );
