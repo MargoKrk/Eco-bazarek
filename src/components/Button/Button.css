@@ -1,5 +1,5 @@
 .Button-base {
-    @apply uppercase px-6 h-[42px] rounded-[2px]
+    @apply px-6 h-[42px] rounded-[2px]
 }
 
 .Button-base.contained {

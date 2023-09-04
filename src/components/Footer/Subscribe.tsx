@@ -40,7 +40,7 @@ export const Subscribe = () => {
         <TextField type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}></TextField>
-        <Button variant={"contained"}>subskrybuj</Button>
+        <Button className="uppercase" variant="contained">subskrybuj</Button>
       </form>
     </>
   );
