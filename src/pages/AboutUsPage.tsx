@@ -1,4 +1,4 @@
-import { Content } from "../components";
+import { Content, FloatingButton } from "../components";
 import AboutUsImage from "../images/about-us-hero.png";
 
 export const AboutUsPage = () => {
@@ -45,6 +45,7 @@ export const AboutUsPage = () => {
         <iframe src="https://player.vimeo.com/video/724732134?title=0&portrait=0&byline=0&autoplay=1&loop=1&transparent=1&muted=1"
         className="h-full left-0 absolute top-0 w-full"></iframe>
       </figure>
+      <FloatingButton />
     </Content>
   );
 };

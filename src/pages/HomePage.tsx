@@ -1,5 +1,10 @@
-import { Content } from "../components"
+import { Content, FloatingButton } from "../components";
 
 export const HomePage = () => {
-    return <Content title="Home">Home Page</Content>
-}
+  return (
+    <Content title="Home">
+      Home Page
+      <FloatingButton />
+    </Content>
+  );
+};
