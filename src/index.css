@@ -18,16 +18,15 @@
 }
 
 h1 {
-
-    @apply text-[48px] text-[#412F22] font-bold
+    @apply text-[48px] text-[#412F22] font-bold leading-[57px]
 }
 
 h2 {
-    @apply text-[32px]
+    @apply text-[32px] font-bold
 }
 
 h3 {
-    @apply text-[24px]
+    @apply text-[20px] font-bold
 }
 
 p {
