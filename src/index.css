@@ -22,11 +22,11 @@ h1 {
 }
 
 h2 {
-    @apply text-[32px] font-bold
+    @apply text-[32px] leading-[38px]
 }
 
 h3 {
-    @apply text-[20px] font-bold
+    @apply text-[20px] font-bold 
 }
 
 p {

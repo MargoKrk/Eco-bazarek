@@ -7,7 +7,7 @@ export const AboutUsPage = () => {
       <img
         src={AboutUsImage}
         alt="hero-image"
-        className="w-full h-[510px] mt-[-2rem]"
+        className="w-full h-auto mt-[-2rem]"
       />
       <h1 className="uppercase my-[35px]">O nas</h1>
       <p>
