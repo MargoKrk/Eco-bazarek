@@ -39,6 +39,7 @@ export const Subscribe = () => {
     <>
       <form className="pt-[40px]" onSubmit={handleSubscribe}>
         <TextField
+        className="w-[420px] mr-[26px]"
           type="email"
           placeholder="Wpisz adres e-mail"
           value={email}
