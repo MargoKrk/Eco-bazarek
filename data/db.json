@@ -15,9 +15,11 @@
     {
       "email": "nmn@kk.pl",
       "id": 7
+    },
+    {
+      "email": "jkj@jk.pl",
+      "id": 8
     }
   ],
-
-  "contact": [
-  ]
+  "contact": []
 }

@@ -9,7 +9,7 @@ export const TextField = (props: TextFieldProps) => {
     const {className, children, ...other} = props
 
     return (
-        <input className={clsx(className, "w-[420px] h-[42px] mr-[26px] text-black rounded-[2px]")} {...other}
+        <input className={clsx(className, "w-[420px] h-[42px] mr-[26px] text-black rounded-[2px] p-2 focus:outline-none")} {...other}
       ></input>
 
     )
