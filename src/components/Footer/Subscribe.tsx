@@ -37,7 +37,7 @@ export const Subscribe = () => {
 
   return (
     <>
-      <form className="pt-[40px]" onSubmit={handleSubscribe}>
+      <form className="flex pt-[40px]" onSubmit={handleSubscribe}>
         <TextField
         className="w-[420px] mr-[26px]"
           type="email"

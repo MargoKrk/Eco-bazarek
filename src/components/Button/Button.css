@@ -3,7 +3,7 @@
 }
 
 .Button-base.contained {
-    @apply bg-[#46AA42]
+    @apply bg-[#46AA42] text-white
 }
 
 .Button-base.text {
