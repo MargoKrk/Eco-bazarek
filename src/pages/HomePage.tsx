@@ -16,13 +16,6 @@ export const HomePage = () => {
     api();
   }, []);
 
-  console.log(categories);
-
-  categories.map((category) => {
-    console.log(category);
-    console.log(category.id);
-  });
-
   return (
     <Content title="Home">
       <img

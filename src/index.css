@@ -4,31 +4,58 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer base {
-    html {
-        background-color: #F6F5F1;
-        font-family: 'Roboto', sans-serif;
-        font-weight: 400;
-    }
+  html {
+    background-color: #f6f5f1;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+  }
 }
 
 .container {
-    @apply w-[1044px]
+  @apply w-[1044px];
 }
 
 h1 {
-    @apply text-[48px] text-[#412F22] font-bold leading-[57px]
+  @apply text-[48px] text-[#412F22] font-bold leading-[57px];
 }
 
 h2 {
-    @apply text-[32px] leading-[38px]
+  @apply text-[32px] leading-[38px];
 }
 
 h3 {
-    @apply text-[20px] font-bold 
+  @apply text-[20px] font-bold;
 }
 
 p {
-    @apply text-[16px]
+  @apply text-[16px];
 }
+
+.Loader-root {
+    display: block;
+    position: relative;
+    width: 118px;
+    height: 160px;
+    background-color: #FFF;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    transform-origin: 50% 100%;
+    animation: 2s eggRot linear infinite alternate;
+  }
+  .Loader-root:after{
+    content:"";
+    position: absolute;
+    left: 50%;
+    bottom: 15%;
+    width: 80px;
+    height: 86px;
+    transform: translateX(-50%);
+    background-color: #ffd900;
+    border-radius: 50% ;
+  }
+  
+  @keyframes eggRot {
+    0%{    transform: rotate(-25deg)}
+    100%{    transform: rotate(25deg)}
+  }
+        

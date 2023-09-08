@@ -8,23 +8,38 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   type: string;
   label?: string;
   value: string;
-  placeholder?: string
-  disabled?: boolean
+  placeholder?: string;
+  disabled?: boolean;
 }
 
 export const TextField = (props: TextFieldProps) => {
-  const { className, classNameLabel,classNameDiv, type, label, value, placeholder, disabled, children, ...other } = props;
+  const {
+    className,
+    classNameLabel,
+    classNameDiv,
+    type,
+    label,
+    value,
+    placeholder,
+    disabled,
+    children,
+    ...other
+  } = props;
 
   return (
     <div className={clsx(classNameDiv)}>
-    <label className={clsx("block text-[12px]", classNameLabel)}>{label}</label>
-    <input
-      className={clsx(
-        className,
-        "h-[42px] text-black rounded-[2px] p-2 focus:outline-none"
-      )}
-      {...other}
-    ></input>
+      <label className={clsx("block text-[12px]", classNameLabel)}>
+        {label}
+      </label>
+      <input
+        type={type}
+        placeholder={placeholder}
+        className={clsx(
+          className,
+          "h-[42px] text-black rounded-[2px] p-2 focus:outline-none"
+        )}
+        {...other}
+      ></input>
     </div>
   );
 };

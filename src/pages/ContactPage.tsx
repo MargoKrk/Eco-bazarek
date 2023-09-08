@@ -1,13 +1,38 @@
 import { useState } from "react";
 import { Content, TextField } from "../components";
 import { Button } from "../components/Button";
+import { fetchContact } from "../../data/baseAPI";
 
 export const ContactPage = () => {
-  const [email, setEmail] = useState(" ");
-  const [name, setName] = useState(" ");
+  const [email, setEmail] = useState<string>(" ");
+  const [fullName, setFullName] = useState(" ");
   const [phone, setPhone] = useState(" ");
   const [theme, setTheme] = useState(" ");
   const [message, setMessage] = useState(" ");
+
+  const handleContact = async (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.preventDefault();
+
+    try {
+      await fetchContact(email, fullName, phone, theme, message)
+      console.log(email, fullName, phone, theme, message)
+    } catch (err) {
+      console.log(err);
+    }
+
+  }
+
+  const handleReset = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    setEmail(" ")
+    setFullName(" ")
+    setPhone(" ")
+    setTheme(" ")
+    setMessage(" ")
+
+    console.log("klikam!")
+  }
 
   return (
     <>
@@ -30,8 +55,8 @@ export const ContactPage = () => {
             type="text"
             label="Imię i nazwisko*"
             placeholder="Wpisz imię i nazwisko"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
           />
           <div className="flex gap-x-[15px]">
             <TextField
@@ -72,10 +97,10 @@ export const ContactPage = () => {
             onChange={(e) => setMessage(e.target.value)}
           />
           <div className="flex justify-end">
-            <Button className="" variant="text">
+            <Button className="" variant="text" onClick={handleReset}>
               Reset
             </Button>
-            <Button className="" variant="contained">
+            <Button className="" variant="contained" onClick={handleContact}>
               Dodaj
             </Button>
           </div>
