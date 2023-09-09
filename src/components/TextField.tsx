@@ -10,6 +10,7 @@ export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   value: string;
   placeholder?: string;
   disabled?: boolean;
+  required?: boolean
 }
 
 export const TextField = (props: TextFieldProps) => {
@@ -22,6 +23,7 @@ export const TextField = (props: TextFieldProps) => {
     value,
     placeholder,
     disabled,
+    required,
     children,
     ...other
   } = props;
@@ -29,7 +31,7 @@ export const TextField = (props: TextFieldProps) => {
   return (
     <div className={clsx(classNameDiv)}>
       <label className={clsx("block text-[12px]", classNameLabel)}>
-        {label}
+        {label}{required && "*"}
       </label>
       <input
         type={type}

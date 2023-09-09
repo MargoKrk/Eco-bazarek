@@ -10,16 +10,17 @@ export const Subscribe = () => {
   const handleSubscribe = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    try {
-      await toast.promise(fetchSubscribe(email), {
-        pending: "Zapisujemy Cię do newslettera",
-        success: "Teraz nas subskrybujesz!",
-      });
-      setEmail(" ");
-    } catch (err) {
-      console.log(err);
-    } finally {
-    }
+    if(email) {
+      try {
+        await toast.promise(fetchSubscribe(email), {
+          pending: "Zapisujemy Cię do newslettera",
+          success: "Teraz nas subskrybujesz!",
+        });
+        setEmail(" ");
+      } catch (err) {
+        console.log(err);
+      }
+    } else toast("Wprowadź email", {type: "info"})
   };
 
   return (

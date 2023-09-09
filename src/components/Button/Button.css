@@ -9,3 +9,20 @@
 .Button-base.text {
     @apply text-black
 }
+
+.Button-base.contained:hover {
+    @apply bg-green-600
+}
+
+.Button-base.contained:active {
+    @apply bg-green-800
+}
+
+
+.Button-base.text:hover {
+    @apply bg-gray-300
+}
+
+.Button-base.text:active {
+    @apply bg-gray-500
+}

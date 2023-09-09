@@ -36,24 +36,25 @@ export const ContactPage = () => {
 
   return (
     <>
-      <h1 className="container mx-auto my-8 uppercase mt-[72px] mb-[34px]">
+      <Content title="Kontakt">
+      <h1 className="uppercase mt-[72px] mb-[34px]">
         kontakt
       </h1>
-      <figure className="h-0 pb-[432px] relative w-full mb-9">
+      <figure className="h-0 pb-[432px] relative w-[100vw] mb-9 ml-[calc(50%-50vw)]">
         <iframe
           src="https://snazzymaps.com/embed/521927"
-          className="h-[432px] left-0 absolute top-0 w-full"
+          className="h-[432px] left-0 absolute top-0 w-[100vw]"
         ></iframe>
       </figure>
 
-      <Content title="Kontakt">
         <h3 className="uppercase mt-[42px] mb-[34px]">napisz wiadomość</h3>
         <form className="flex flex-col w-[690px] gap-y-[34px] mb-[113px]">
           <TextField
             className="w-full"
             classNameDiv="w-full"
             type="text"
-            label="Imię i nazwisko*"
+            label="Imię i nazwisko"
+            required={true}
             placeholder="Wpisz imię i nazwisko"
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
@@ -63,7 +64,8 @@ export const ContactPage = () => {
               classNameDiv="w-50% grow"
               className="w-full"
               type="email"
-              label="Email*"
+              label="Email"
+              required={true}
               placeholder="Wpisz adres e-mail"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -72,7 +74,7 @@ export const ContactPage = () => {
               classNameDiv="w-50% grow"
               className="w-full"
               type="tel"
-              label="Telefon*"
+              label="Telefon"
               placeholder="Wpisz numer telefonu"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
@@ -82,21 +84,22 @@ export const ContactPage = () => {
             classNameDiv="w-full"
             className="w-full"
             type="text"
-            label="Temat*"
+            label="Temat"
+            required={true}
             placeholder="Wpisz temat wiadomości"
             value={theme}
             onChange={(e) => setTheme(e.target.value)}
           />
           <TextField
             classNameDiv="w-full"
-            className="w-full h-[123px]"
+            className="w-full !h-[123px]"
             type="text"
-            label="Wiadomość*"
-            placeholder="Wpisz wiadomość"
+            label="Wiadomość"
+            required={true}
             value={message}
             onChange={(e) => setMessage(e.target.value)}
           />
-          <div className="flex justify-end">
+          <div className="flex justify-end gap-[16px]">
             <Button className="" variant="text" onClick={handleReset}>
               Reset
             </Button>
