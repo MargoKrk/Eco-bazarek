@@ -16,6 +16,7 @@ export const HomePage = () => {
     api();
   }, []);
 
+  
   return (
     <Content title="Home">
       <img
@@ -44,3 +45,7 @@ export const HomePage = () => {
     </Content>
   );
 };
+function axios() {
+  throw new Error("Function not implemented.");
+}
+

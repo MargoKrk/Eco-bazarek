@@ -1,6 +1,6 @@
-// export const HOST = "https://api-eko-bazarek.azurewebsites.net/api";
+export const HOST = "https://api-eko-bazarek.azurewebsites.net/api";
 
-export const HOST = "http://localhost:3000"
+// export const HOST = "http://localhost:3000"
 
 export const CATEGORIES_HOST =
   "https://api-eko-bazarek.azurewebsites.net/api/products/categories/top";
@@ -22,6 +22,16 @@ export const fetchContact = (email: string, fullName: string, phone: string, the
   return fetch(HOST + "/contact", {
     method: "POST",
     body: JSON.stringify({ email, fullName, phone, theme, message }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+}
+
+export const loginUser = (email: string, password: string) => {
+  return fetch(HOST + "/users/login", {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
     headers: {
       "Content-Type": "application/json",
     },

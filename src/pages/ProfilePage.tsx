@@ -1,18 +1,52 @@
+import { useContext, useState } from "react";
 import { Content, TextField } from "../components";
 import { Button } from "../components/Button";
+import { UserContext } from "../context/UserContext";
 
 export const ProfilePage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { isLogin, login } = useContext(UserContext);
+
   return (
     <Content title="Profil">
-      <h1 className="container uppercase">zaloguj się</h1>
-      <form className="flex flex-col">
-        <TextField className="mt-2" />
-        <TextField type="password" className="mt-2" />
-        <div>
-          <Button variant="text">Zarejestruj sie</Button>
-          <Button variant="contained">Zaloguj się</Button>
-        </div>
-      </form>
+      {isLogin ? (
+        <h1>Jesteś zalogowany</h1>
+      ) : (
+        <>
+          <h1 className="container uppercase">zaloguj się</h1>
+          <form className="flex flex-col w-[515px] gap-y-[34px]">
+            <TextField
+              type="email"
+              className="mt-2 w-[515px]"
+              label="Email"
+              required={true}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <TextField
+              type="password"
+              className="mt-2 w-[515px]"
+              label="Hasło"
+              required={true}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <div className="flex justify-end gap-[16px] mt-[30px] mb-[189px]">
+              <Button variant="text">Zarejestruj sie</Button>
+              <Button
+                variant="contained"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  login(email, password);
+                }}
+              >
+                Zaloguj się
+              </Button>
+            </div>
+          </form>
+        </>
+      )}
     </Content>
   );
 };
