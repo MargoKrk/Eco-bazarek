@@ -16,7 +16,7 @@ export const Subscribe = () => {
           pending: "Zapisujemy Cię do newslettera",
           success: "Teraz nas subskrybujesz!",
         });
-        setEmail(" ");
+        setEmail("");
       } catch (err) {
         console.log(err);
       }

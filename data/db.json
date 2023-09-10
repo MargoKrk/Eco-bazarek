@@ -3,58 +3,6 @@
     {
       "email": "hghgh@kk.com",
       "id": 4
-    },
-    {
-      "email": "hjh@kk.com",
-      "id": 5
-    },
-    {
-      "email": "hj@wd.kk",
-      "id": 6
-    },
-    {
-      "email": "nmn@kk.pl",
-      "id": 7
-    },
-    {
-      "email": "jkj@jk.pl",
-      "id": 8
-    },
-    {
-      "email": "mn@wm.pl",
-      "id": 9
-    },
-    {
-      "email": "",
-      "id": 10
-    },
-    {
-      "email": "",
-      "id": 11
-    },
-    {
-      "email": "mn@wm.pl",
-      "id": 12
-    },
-    {
-      "email": "mn@wm.pl",
-      "id": 13
-    },
-    {
-      "email": "mn@wm.pl",
-      "id": 14
-    },
-    {
-      "email": "mnn@wk.pl",
-      "id": 15
-    },
-    {
-      "email": "mcncn@wm.pl",
-      "id": 16
-    },
-    {
-      "email": "nmn@wl.pl",
-      "id": 17
     }
   ],
   "contact": [
@@ -65,22 +13,6 @@
       "theme": "mgk",
       "message": "jgvku",
       "id": 1
-    },
-    {
-      "email": "mn@wm.pl",
-      "fullName": "dfd",
-      "phone": "515",
-      "theme": "zgdg",
-      "message": "ksjnksgkjns",
-      "id": 2
-    },
-    {
-      "email": "dmdm@wj.pl",
-      "fullName": "mcmcmc",
-      "phone": "5256",
-      "theme": "jkskds",
-      "message": "djkfskfjlns",
-      "id": 3
     }
   ]
 }
