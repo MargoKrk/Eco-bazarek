@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useState } from "react";
 import { Content, FloatingButton } from "../components";
 import AboutUsImage from "../images/about-us-hero.png";
 import { Loader } from "../components/Loader";
@@ -6,35 +6,27 @@ import React from "react";
 
 export const AboutUsPage = () => {
 
-const Content = React.lazy(() => import("../components").then(({Content}) => ({default: Content})))
+// const Content = React.lazy(() => import("../components").then(({Content}) => ({default: Content})))
 
-  // const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true)
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-
-  //   const timeout = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 2000);
-
-  //   return () => {
-  //     clearTimeout(timeout);
-  //     setIsLoading(false);
-  //   };
-  // }, []);
+  const allLoadEvent = () => {
+    setIsLoading(false)
+  }
 
   return (
     <>
-      <Suspense
+      {/* <Suspense
         fallback={
           <div className="absolute top-0 left-0 w-full h-full z-10 backdrop-opacity-40 bg-[#f6f5f1]/75">
             <Loader className="absolute top-[10%] left-[50%]" />
           </div>
         }
-      >
+      > */}
         <>
           <Content title="O nas" 
-          // loading={isLoading}
+          onLoadCapture={allLoadEvent}
+          loading={isLoading}
           >
             <img
               src={AboutUsImage}
@@ -85,7 +77,7 @@ const Content = React.lazy(() => import("../components").then(({Content}) => ({d
             <FloatingButton />
           </Content>
         </>
-      </Suspense>
+      {/* </Suspense> */}
     </>
   );
 };

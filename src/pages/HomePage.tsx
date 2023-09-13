@@ -6,6 +6,7 @@ import { categoriesResult } from "../../data/types";
 
 export const HomePage = () => {
   const [categories, setCategories] = useState<categoriesResult[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const api = async () => {
@@ -16,9 +17,12 @@ export const HomePage = () => {
     api();
   }, []);
 
-  
+  const allLoadEvent = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <Content title="Home">
+    <Content title="Home" onLoad={allLoadEvent} loading={isLoading}>
       <img
         src={HomeImage}
         alt="hero-image"
@@ -48,4 +52,3 @@ export const HomePage = () => {
 function axios() {
   throw new Error("Function not implemented.");
 }
-
