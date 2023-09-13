@@ -29,22 +29,31 @@ export const UserProvider = (props: { children: ReactNode }) => {
     console.log(email, password);
     setLogining(true);
 
-    try {
-      const data = await loginUser(email, password);
-      const jsonData: LoginUserResponse = await data.json();
-      setToken(jsonData.token);
-      setProfile(jsonData.user);
-      console.log(jsonData);
-    } catch (error) {
-      alert(error);
-      toast("Zły email lub hasło", { type: "error" });
-    } finally {
-      setLogining(false);
+    if (email && password) {
+      try {
+        const data = await loginUser(email, password);
+        if(data.status !== 200) {
+          toast("Zły email lub hasło", { type: "error" });
+        }
+        const jsonData: LoginUserResponse = await data.json();
+        setToken(jsonData.token);
+        setProfile(jsonData.user);
+        console.log(data);
+      } catch (error) {
+        alert(error);
+        toast("Zły email lub hasło", { type: "error" });
+      } finally {
+        setLogining(false);
+      }
+    } else {
+      toast("Wpisz e-mail i hasło", { type : "error"})
     }
   };
 
   return (
-    <UserContext.Provider value={{ logining, token, profile, isLogin:Boolean(profile), login }}>
+    <UserContext.Provider
+      value={{ logining, token, profile, isLogin: Boolean(profile), login }}
+    >
       {props.children}
     </UserContext.Provider>
   );

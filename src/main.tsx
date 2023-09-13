@@ -10,8 +10,10 @@ import {
   ContactPage,
   TermOfUsePage,
   PrivacyPolicyPage,
-  ProfilePage,
+  ProfileSignInPage,
   NotFoundPage,
+  ProfilePage,
+  RegistrationPage,
 } from "./pages/index.tsx";
 
 const router = createBrowserRouter([
@@ -44,9 +46,18 @@ const router = createBrowserRouter([
         element: <PrivacyPolicyPage />,
       },
       {
+        path: "/profile-sign-in",
+        element: <ProfileSignInPage />,
+      },
+      {
         path: "/profile",
         element: <ProfilePage />,
       },
+      {
+        path: "/registration",
+        element: <RegistrationPage />,
+      },
+
       {
         path: "*",
         element: <NotFoundPage />,

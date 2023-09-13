@@ -1,9 +1,9 @@
 import { Content, FloatingButton } from "../components";
 
-export const ProfilePage = () => {
+export const RegistrationPage = () => {
   return (
     <Content title="Produkty">
-      Profile Page
+      Registration Page
       <FloatingButton />
     </Content>
   );
