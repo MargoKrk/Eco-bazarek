@@ -1,24 +1,21 @@
 import clsx from "clsx";
-import { InputHTMLAttributes } from "react";
+import { TextareaHTMLAttributes } from "react";
 
-export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface TextAreaFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
   className?: string;
   classNameLabel?: string;
   classNameDiv?: string;
-  type: string;
   label?: string;
-  value: string;
+  value?: string;
   placeholder?: string;
-  disabled?: boolean;
   required?: boolean
 }
 
-export const TextField = (props: TextFieldProps) => {
+export const TextAreaField = (props: TextAreaFieldProps) => {
   const {
     className,
     classNameLabel,
     classNameDiv,
-    type,
     label,
     value,
     placeholder,
@@ -33,15 +30,14 @@ export const TextField = (props: TextFieldProps) => {
       <label className={clsx("block text-[12px]", classNameLabel)}>
         {label}{required && "*"}
       </label>
-      <input
-        type={type}
+      <textarea
         placeholder={placeholder}
         className={clsx(
           className,
-          "h-[42px] w-full text-black rounded-[2px] p-2 focus:outline-none"
+          "text-black w-full rounded-[2px] p-2 focus:outline-none resize-none"
         )}
         {...other}
-      ></input>
+      ></textarea>
     </div>
   );
 };
