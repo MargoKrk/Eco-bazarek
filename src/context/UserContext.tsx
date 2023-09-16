@@ -38,7 +38,9 @@ export const UserProvider = (props: { children: ReactNode }) => {
         const jsonData: LoginUserResponse = await data.json();
         setToken(jsonData.token);
         setProfile(jsonData.user);
-        console.log(data);
+        console.log(data, typeof data);
+        // const localData = localStorage.setItem("userLogin", JSON.stringify(data))
+        // console.log(localData)
       } catch (error) {
         alert(error);
         toast("Zły email lub hasło", { type: "error" });
