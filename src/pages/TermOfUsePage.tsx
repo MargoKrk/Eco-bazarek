@@ -1,8 +1,16 @@
+import { useState } from "react";
 import { Content } from "../components";
 
 export const TermOfUsePage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  const allLoadEvent = () => {
+    setIsLoading(false);
+  };
+
   return (
-    <Content title="Warunki użytkowania" className="">
+    <Content title="Warunki użytkowania" onLoad={allLoadEvent} loading={isLoading}>
       <h1 className="pb-10">Warunki użytkowania</h1>
       <p className="text-justify">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vel

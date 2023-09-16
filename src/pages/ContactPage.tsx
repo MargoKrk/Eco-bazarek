@@ -1,9 +1,8 @@
-import { Suspense, useState } from "react";
+import { useState } from "react";
 import { Content, TextAreaField, TextField } from "../components";
 import { Button } from "../components/Button";
 import { fetchContact } from "../../data/baseAPI";
 import { toast } from "react-toastify";
-import { Loader } from "../components/Loader";
 import React from "react";
 
 export const ContactPage = () => {
@@ -18,7 +17,6 @@ export const ContactPage = () => {
     setIsLoading(false);
   };
 
-  // const Content = React.lazy(() => import("../components").then(({Content}) => ({default: Content})))
 
   const handleContact = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();

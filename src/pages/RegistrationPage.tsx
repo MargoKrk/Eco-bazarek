@@ -1,9 +1,17 @@
+import { useState } from "react";
 import { Content, TextAreaField, TextField } from "../components";
 import { Button } from "../components/Button";
 
 export const RegistrationPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  const allLoadEvent = () => {
+    setIsLoading(false);
+  };
+
+
   return (
-    <Content title="Produkty">
+    <Content title="Produkty" onLoad={allLoadEvent} loading={isLoading}>
       <form className="flex flex-col w-[690px] gap-y-[34px] mb-[113px]">
         <div className="grid grid-rows-3 grid-cols-2 gap-x-[15px] gap-y-[34px]">
           <TextField

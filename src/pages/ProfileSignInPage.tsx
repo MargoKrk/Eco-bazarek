@@ -9,9 +9,15 @@ export const ProfileSignInPage = () => {
   const [password, setPassword] = useState("");
   const { isLogin, login } = useContext(UserContext);
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
+
+
+  const allLoadEvent = () => {
+    setIsLoading(false);
+  };
 
   return (
-    <Content title="Profil">
+    <Content title="Profil" onLoad={allLoadEvent} loading={isLoading}>
       {isLogin ? (
         <Navigate replace to="/profile"/>
       ) : (
