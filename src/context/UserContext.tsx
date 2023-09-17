@@ -21,7 +21,6 @@ export const UserContext = createContext<UserContextProps>({
 
 export const UserProvider = (props: { children: ReactNode }) => {
   const [logining, setLogining] = useState(false);
-  //   const [isLogin, setIsLogin] = useState(false);
   const [token, setToken] = useState<string | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
 
@@ -32,15 +31,15 @@ export const UserProvider = (props: { children: ReactNode }) => {
     if (email && password) {
       try {
         const data = await loginUser(email, password);
-        if(data.status !== 200) {
+        if (data.status !== 200) {
           toast("Zły email lub hasło", { type: "error" });
         }
         const jsonData: LoginUserResponse = await data.json();
         setToken(jsonData.token);
         setProfile(jsonData.user);
-        console.log(data, typeof data);
-        // const localData = localStorage.setItem("userLogin", JSON.stringify(data))
-        // console.log(localData)
+        localStorage.setItem("userLogin", JSON.stringify(jsonData));
+        console.log(data);
+        console.log(jsonData);
       } catch (error) {
         alert(error);
         toast("Zły email lub hasło", { type: "error" });
@@ -48,9 +47,11 @@ export const UserProvider = (props: { children: ReactNode }) => {
         setLogining(false);
       }
     } else {
-      toast("Wpisz e-mail i hasło", { type : "error"})
+      toast("Wpisz e-mail i hasło", { type: "error" });
     }
   };
+
+  console.log(token);
 
   return (
     <UserContext.Provider
