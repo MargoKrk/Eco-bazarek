@@ -1,8 +1,11 @@
 import clsx from "clsx";
-import { TextareaHTMLAttributes } from "react";
+import { HtmlHTMLAttributes, TextareaHTMLAttributes } from "react";
 import { FormLabel } from ".";
 
-export interface TextAreaFieldProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
+
+export interface TextAreaFieldProps extends Omit<HtmlHTMLAttributes<HTMLDivElement>, "children"> {
+  textAreaProps?: TextAreaProps;
   className?: string;
   classNameLabel?: string;
   classNameDiv?: string;
@@ -21,14 +24,11 @@ export const TextAreaField = (props: TextAreaFieldProps) => {
     classNameLabel,
     classNameDiv,
     label,
-    value,
     placeholder,
     required = false,
     helperText,
     classNameHelperText,
     error = false,
-    children,
-    ...other
   } = props;
 
   return (
@@ -44,7 +44,6 @@ export const TextAreaField = (props: TextAreaFieldProps) => {
           className,
           "text-black w-full rounded-[2px] p-2 focus:outline-none resize-none"
         )}
-        {...other}
       ></textarea>
              {helperText && (
           <span

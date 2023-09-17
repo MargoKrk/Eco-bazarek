@@ -1,15 +1,18 @@
 import clsx from "clsx";
-import { InputHTMLAttributes } from "react";
+import { HtmlHTMLAttributes, InputHTMLAttributes } from "react";
 import { FormHelperText, FormLabel } from ".";
 
-export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps extends InputHTMLAttributes<HTMLInputElement>{}
+
+export interface TextFieldProps extends Omit<HtmlHTMLAttributes<HTMLDivElement>, "children"> {
+  inputProps?: InputProps;
   className?: string;
   classNameDiv?: string;
   classNameLabel?: string;
   classNameHelperText?: string;
-  type: string;
+  type?: string;
   label?: string;
-  value: string;
+  value?: string;
   placeholder?: string;
   required?: boolean;
   helperText?: string;
@@ -21,16 +24,13 @@ export const TextField = (props: TextFieldProps) => {
     className,
     classNameDiv,
     classNameLabel,
-    type,
+    type = "text",
     label,
-    value,
     placeholder,
     required = false,
     helperText,
     classNameHelperText,
     error = false,
-    children,
-    ...other
   } = props;
 
   return (
@@ -47,7 +47,6 @@ export const TextField = (props: TextFieldProps) => {
           className,
           "h-[42px] w-full text-black rounded-[2px] p-2 focus:outline-none"
         )}
-        {...other}
       />
       {helperText && (
         <FormHelperText

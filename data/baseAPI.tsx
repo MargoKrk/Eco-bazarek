@@ -1,3 +1,5 @@
+import { CreateUserProfile } from "./types";
+
 export const HOST = "https://api-eko-bazarek.azurewebsites.net/api";
 
 // export const HOST = "http://localhost:3000"
@@ -36,4 +38,15 @@ export const loginUser = (email: string, password: string) => {
       "Content-Type": "application/json",
     },
   })
+}
+
+export const createUser = (newUser: CreateUserProfile) => {
+  return fetch(HOST + "/users", {
+    method: "POST",
+    body: JSON.stringify({ ...newUser }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+
 }

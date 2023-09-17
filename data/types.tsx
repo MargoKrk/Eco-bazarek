@@ -28,3 +28,8 @@ export interface UserProfile {
     token: string;
     user: UserProfile;
   }
+
+  export interface CreateUserProfile extends Omit<UserProfile, "id"> {
+    password: string;
+    repeatPassword: string;
+  }

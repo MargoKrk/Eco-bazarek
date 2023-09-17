@@ -77,7 +77,6 @@ export const ContactPage = () => {
         <h3 className="uppercase mt-[42px] mb-[34px]">napisz wiadomość</h3>
         <form className="grid grid-cols-1 w-[690px] gap-y-[34px] mb-[113px]">
           <TextField
-            type="text"
             label="Imię i nazwisko"
             required={true}
             placeholder="Wpisz imię i nazwisko"
@@ -94,7 +93,6 @@ export const ContactPage = () => {
               onChange={(e) => setEmail(e.target.value)}
             />
             <TextField
-              type="tel"
               label="Telefon"
               placeholder="Wpisz numer telefonu"
               value={phone}
@@ -103,7 +101,6 @@ export const ContactPage = () => {
           </div>
           <div className="grid gap-y-[34px]">
             <TextField
-              type="text"
               label="Temat"
               required={true}
               placeholder="Wpisz temat wiadomości"
@@ -119,12 +116,12 @@ export const ContactPage = () => {
               onChange={(e) => setMessage(e.target.value)}
             />
           </div>
-          <div className="flex justify-end gap-[16px]">
-            <Button className="" variant="text" onClick={handleReset}>
-              Reset
-            </Button>
-            <Button className="" variant="contained" onClick={handleContact}>
+          <div className="flex justify-start flex-row-reverse gap-[16px]">
+          <Button variant="contained" type="submit" onClick={handleContact}>
               Dodaj
+            </Button>
+            <Button variant="text" type="reset" onClick={handleReset}>
+              Reset
             </Button>
           </div>
         </form>

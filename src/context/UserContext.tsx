@@ -38,8 +38,6 @@ export const UserProvider = (props: { children: ReactNode }) => {
         setToken(jsonData.token);
         setProfile(jsonData.user);
         localStorage.setItem("userLogin", JSON.stringify(jsonData));
-        console.log(data);
-        console.log(jsonData);
       } catch (error) {
         alert(error);
         toast("Zły email lub hasło", { type: "error" });
@@ -51,7 +49,6 @@ export const UserProvider = (props: { children: ReactNode }) => {
     }
   };
 
-  console.log(token);
 
   return (
     <UserContext.Provider
