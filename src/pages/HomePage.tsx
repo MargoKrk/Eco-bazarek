@@ -49,6 +49,3 @@ export const HomePage = () => {
     </Content>
   );
 };
-function axios() {
-  throw new Error("Function not implemented.");
-}

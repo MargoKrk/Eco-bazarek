@@ -1,38 +1,45 @@
 import clsx from "clsx";
 import { InputHTMLAttributes } from "react";
+import { FormHelperText, FormLabel } from ".";
 
 export interface TextFieldProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
-  classNameLabel?: string;
   classNameDiv?: string;
+  classNameLabel?: string;
+  classNameHelperText?: string;
   type: string;
   label?: string;
   value: string;
   placeholder?: string;
-  disabled?: boolean;
-  required?: boolean
+  required?: boolean;
+  helperText?: string;
+  error?: boolean;
 }
 
 export const TextField = (props: TextFieldProps) => {
   const {
     className,
-    classNameLabel,
     classNameDiv,
+    classNameLabel,
     type,
     label,
     value,
     placeholder,
-    disabled,
-    required,
+    required = false,
+    helperText,
+    classNameHelperText,
+    error = false,
     children,
     ...other
   } = props;
 
   return (
-    <div className={clsx(classNameDiv)}>
-      <label className={clsx("block text-[12px]", classNameLabel)}>
-        {label}{required && "*"}
-      </label>
+    <div className={clsx(classNameDiv, error ? "text-red-600" : "text=black")}>
+      <FormLabel
+        label={label as string}
+        required={required}
+        className={classNameLabel}
+      />
       <input
         type={type}
         placeholder={placeholder}
@@ -41,7 +48,13 @@ export const TextField = (props: TextFieldProps) => {
           "h-[42px] w-full text-black rounded-[2px] p-2 focus:outline-none"
         )}
         {...other}
-      ></input>
+      />
+      {helperText && (
+        <FormHelperText
+          helperText={helperText}
+          className={classNameHelperText}
+        />
+      )}
     </div>
   );
 };

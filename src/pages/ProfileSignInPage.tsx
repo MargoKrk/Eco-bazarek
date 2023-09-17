@@ -9,17 +9,14 @@ export const ProfileSignInPage = () => {
   const [password, setPassword] = useState("");
   const { isLogin, login } = useContext(UserContext);
   const navigate = useNavigate();
-  const [isLoading, setIsLoading] = useState(true);
 
 
-  const allLoadEvent = () => {
-    setIsLoading(false);
-  };
+
 
   return (
-    <Content title="Profil" onLoad={allLoadEvent} loading={isLoading}>
+    <Content title="Profil">
       {isLogin ? (
-        <Navigate replace to="/profile"/>
+        <Navigate replace to="/profile" />
       ) : (
         <>
           <h1 className="container uppercase">zaloguj się</h1>
@@ -40,15 +37,8 @@ export const ProfileSignInPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="flex justify-end gap-[16px] mt-[30px] mb-[189px]">
-              <Button 
-                variant="text"
-                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-                  e.preventDefault();
-                  navigate("/registration");
-                }}
-                >Zarejestruj sie</Button>
-              <Button
+            <div className="flex justify-start flex-row-reverse gap-[16px] mt-[30px] mb-[189px]">
+            <Button
                 variant="contained"
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
@@ -56,6 +46,16 @@ export const ProfileSignInPage = () => {
                 }}
               >
                 Zaloguj się
+              </Button>
+
+              <Button
+                variant="text"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
+                  e.preventDefault();
+                  navigate("/registration");
+                }}
+              >
+                Zarejestruj sie
               </Button>
             </div>
           </form>
