@@ -10,7 +10,7 @@ export const Subscribe = () => {
   const handleSubscribe = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if(email) {
+    if (email) {
       try {
         await toast.promise(fetchSubscribe(email), {
           pending: "Zapisujemy Cię do newslettera",
@@ -20,7 +20,7 @@ export const Subscribe = () => {
       } catch (err) {
         console.log(err);
       }
-    } else toast("Wprowadź email", {type: "info"})
+    } else toast("Wprowadź email", { type: "info" });
   };
 
   return (
@@ -28,10 +28,12 @@ export const Subscribe = () => {
       <form className="flex pt-[40px]" onSubmit={handleSubscribe}>
         <TextField
           className="w-[420px] mr-[26px]"
-          type="email"
-          placeholder="Wpisz adres e-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          inputProps={{
+            type: "email",
+            value: email,
+            placeholder: "Wpisz adres e-mail",
+            onChange: (e) => setEmail(e.target.value),
+          }}
         ></TextField>
         <Button className="uppercase" variant="contained">
           subskrybuj

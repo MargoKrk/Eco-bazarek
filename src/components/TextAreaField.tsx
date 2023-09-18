@@ -1,51 +1,67 @@
 import clsx from "clsx";
-import { HtmlHTMLAttributes, TextareaHTMLAttributes } from "react";
+import {
+  HtmlHTMLAttributes,
+  RefObject,
+  TextareaHTMLAttributes,
+  forwardRef,
+} from "react";
 import { FormLabel } from ".";
 
-export interface TextAreaProps extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
+export interface TextAreaProps
+  extends TextareaHTMLAttributes<HTMLTextAreaElement> {}
 
-export interface TextAreaFieldProps extends Omit<HtmlHTMLAttributes<HTMLDivElement>, "children"> {
+export interface TextAreaFieldProps
+  extends Omit<HtmlHTMLAttributes<HTMLDivElement>, "children"> {
   textAreaProps?: TextAreaProps;
   className?: string;
   classNameLabel?: string;
   classNameDiv?: string;
   classNameHelperText?: string;
   label?: string;
-  value?: string;
-  placeholder?: string;
   required?: boolean;
   helperText?: string;
-  error?: boolean
+  error?: boolean;
+  textAreaRef?: RefObject<HTMLTextAreaElement>;
 }
 
-export const TextAreaField = (props: TextAreaFieldProps) => {
-  const {
-    className,
-    classNameLabel,
-    classNameDiv,
-    label,
-    placeholder,
-    required = false,
-    helperText,
-    classNameHelperText,
-    error = false,
-  } = props;
+export const TextAreaField = forwardRef<HTMLDivElement, TextAreaFieldProps>(
+  (props, ref) => {
+    const {
+      className,
+      classNameLabel,
+      classNameDiv,
+      label,
+      required = false,
+      helperText,
+      classNameHelperText,
+      error = false,
+      textAreaProps = {},
+      textAreaRef,
+      ...other
+    } = props;
 
-  return (
-    <div className={clsx(classNameDiv, error ? "text-red-600" : "text=black")}>
-      <FormLabel
-        label={label as string}
-        required={required}
-        className={classNameLabel}
-      />
-      <textarea
-        placeholder={placeholder}
-        className={clsx(
-          className,
-          "text-black w-full rounded-[2px] p-2 focus:outline-none resize-none"
-        )}
-      ></textarea>
-             {helperText && (
+    const { className: classNameInput, ...otherTextArea } = textAreaProps;
+
+    return (
+      <div
+        ref={ref}
+        className={clsx(classNameDiv, error ? "text-red-600" : "text=black")}
+        {...other}
+      >
+        <FormLabel
+          label={label as string}
+          required={required}
+          className={classNameLabel}
+        />
+        <textarea
+          ref={textAreaRef}
+          className={clsx(
+            className,
+            "text-black w-full rounded-[2px] p-2 focus:outline-none resize-none"
+          )}
+          {...otherTextArea}
+        ></textarea>
+        {helperText && (
           <span
             className={clsx(
               "block text-xs font-normal mt-1",
@@ -55,7 +71,7 @@ export const TextAreaField = (props: TextAreaFieldProps) => {
             {helperText}
           </span>
         )}
-
-    </div>
-  );
-};
+      </div>
+    );
+  }
+);

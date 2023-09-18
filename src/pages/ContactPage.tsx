@@ -17,7 +17,6 @@ export const ContactPage = () => {
     setIsLoading(false);
   };
 
-
   const handleContact = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const validErrors = [];
@@ -79,45 +78,55 @@ export const ContactPage = () => {
           <TextField
             label="Imię i nazwisko"
             required={true}
-            placeholder="Wpisz imię i nazwisko"
-            value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            inputProps={{
+              value: fullName,
+              placeholder: "Wpisz imię i nazwisko",
+              onChange: (e) => setFullName(e.target.value),
+            }}
           />
           <div className="grid grid-cols-2 gap-x-[15px] gap-y-[34px]">
             <TextField
-              type="email"
               label="Email"
               required={true}
-              placeholder="Wpisz adres e-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              inputProps={{
+                type: "email",
+                value: email,
+                placeholder: "Wpisz adres e-mail",
+                onChange: (e) => setEmail(e.target.value),
+              }}
             />
             <TextField
               label="Telefon"
-              placeholder="Wpisz numer telefonu"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              inputProps={{
+                value: phone,
+                placeholder: "Wpisz numer telefonu",
+                onChange: (e) => setPhone(e.target.value),
+              }}
             />
           </div>
           <div className="grid gap-y-[34px]">
             <TextField
               label="Temat"
               required={true}
-              placeholder="Wpisz temat wiadomości"
-              value={theme}
-              onChange={(e) => setTheme(e.target.value)}
+              inputProps={{
+                value: theme,
+                placeholder: "Wpisz temat wiadomości",
+                onChange: (e) => setTheme(e.target.value),
+              }}
             />
             <TextAreaField
               className="h-[123px]"
               label="Wiadomość"
-              placeholder="Wpisz tekst wiadomości"
               required={true}
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
+              textAreaProps={{
+                value: message,
+                placeholder: "Wpisz tekst wiadomości",
+                onChange: (e) => setMessage(e.target.value),
+              }}
             />
           </div>
           <div className="flex justify-start flex-row-reverse gap-[16px]">
-          <Button variant="contained" type="submit" onClick={handleContact}>
+            <Button variant="contained" type="submit" onClick={handleContact}>
               Dodaj
             </Button>
             <Button variant="text" type="reset" onClick={handleReset}>

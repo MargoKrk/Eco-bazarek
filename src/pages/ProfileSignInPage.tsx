@@ -22,20 +22,24 @@ export const ProfileSignInPage = () => {
           <h1 className="container uppercase">zaloguj się</h1>
           <form className="flex flex-col w-[515px] gap-y-[34px] mt-[38px]">
             <TextField
-              type="email"
               className="mt-2 w-[515px]"
-              label="Email"
-              required={true}
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              label="Email" 
+              required={true} 
+              inputProps={{
+                type: "email",
+                value: email,
+                onChange:(e) => setEmail(e.target.value)
+              }}
             />
             <TextField
-              type="password"
               className="mt-2 w-[515px]"
               label="Hasło"
               required={true}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              inputProps={{
+                type: "password",
+                value: password,
+                onChange:(e) => setPassword(e.target.value)
+              }}
             />
             <div className="flex justify-start flex-row-reverse gap-[16px] mt-[30px] mb-[189px]">
             <Button
