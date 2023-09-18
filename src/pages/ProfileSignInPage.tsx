@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Content, TextField } from "../components";
 import { Button } from "../components/Button";
 import { UserContext } from "../context/UserContext";
@@ -7,11 +7,12 @@ import { Navigate, useNavigate } from "react-router-dom";
 export const ProfileSignInPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { isLogin, login } = useContext(UserContext);
+  const { isLogin, login, checkLocalStorage } = useContext(UserContext);
   const navigate = useNavigate();
 
-
-
+  useEffect(() => {
+    checkLocalStorage();
+  }, []);
 
   return (
     <Content title="Profil">
@@ -23,12 +24,12 @@ export const ProfileSignInPage = () => {
           <form className="flex flex-col w-[515px] gap-y-[34px] mt-[38px]">
             <TextField
               className="mt-2 w-[515px]"
-              label="Email" 
-              required={true} 
+              label="Email"
+              required={true}
               inputProps={{
                 type: "email",
                 value: email,
-                onChange:(e) => setEmail(e.target.value)
+                onChange: (e) => setEmail(e.target.value),
               }}
             />
             <TextField
@@ -38,11 +39,11 @@ export const ProfileSignInPage = () => {
               inputProps={{
                 type: "password",
                 value: password,
-                onChange:(e) => setPassword(e.target.value)
+                onChange: (e) => setPassword(e.target.value),
               }}
             />
             <div className="flex justify-start flex-row-reverse gap-[16px] mt-[30px] mb-[189px]">
-            <Button
+              <Button
                 variant="contained"
                 onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.preventDefault();
