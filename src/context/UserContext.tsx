@@ -28,9 +28,12 @@ export const UserProvider = (props: { children: ReactNode }) => {
   const [profile, setProfile] = useState<UserProfile | null>(null);
 
   const checkLocalStorage = async () => {
-    const localData = JSON.parse(localStorage.getItem("userLogin") || "");
+    const localData = await JSON.parse(localStorage.getItem("userLogin") || "");
     setLogining(true);
-    console.log(localData);
+    setToken(localData.token);
+    setProfile(localData.user);
+    toast("Jesteś zalogowany", {type: "success"});
+    console.log(localData)
   };
 
   const login = async (email: string, password: string) => {
@@ -46,6 +49,7 @@ export const UserProvider = (props: { children: ReactNode }) => {
         const jsonData: LoginUserResponse = await data.json();
         setToken(jsonData.token);
         setProfile(jsonData.user);
+        toast("Jesteś zalogowany", {type: "success"});
         localStorage.setItem("userLogin", JSON.stringify(jsonData));
       } catch (error) {
         alert(error);
