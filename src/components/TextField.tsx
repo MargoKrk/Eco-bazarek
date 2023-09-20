@@ -56,7 +56,8 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
           ref={inputRef}
           className={clsx(
             className,
-            "h-[42px] w-full text-black rounded-[2px] p-2 focus:outline-none"
+            "h-[42px] w-full text-black rounded-[2px] p-2 focus:outline-none",
+            error ? "bg-red-200 border-2 border-red-300" : "bg-white"
           )}
           {...otherInput}
         />

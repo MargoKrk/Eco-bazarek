@@ -7,4 +7,4 @@ export { PrivacyPolicyPage } from "./PrivacyPolicy";
 export { ProfileSignInPage } from "./ProfileSignInPage";
 export { NotFoundPage } from "./NotFoundPage";
 export { ProfilePage } from "./ProfilePage";
-export { RegistrationPage } from "./RegistrationPage";
+export { RegistrationPage } from "./RegistrationPage/RegistrationPage";

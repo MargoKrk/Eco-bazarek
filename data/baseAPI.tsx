@@ -1,4 +1,5 @@
 import { CreateUserProfile } from "./types";
+import axios, { AxiosResponse } from "axios";
 
 export const HOST = "https://api-eko-bazarek.azurewebsites.net/api";
 
@@ -50,3 +51,8 @@ export const createUser = (newUser: CreateUserProfile) => {
   })
 
 }
+
+export const createUserAxios = (
+  newUser: CreateUserProfile
+): Promise<AxiosResponse<unknown, unknown>> =>
+  axios.post(HOST + "/users", newUser);
