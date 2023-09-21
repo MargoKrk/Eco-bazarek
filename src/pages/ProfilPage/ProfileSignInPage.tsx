@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
-import { Content, TextField } from "../components";
-import { Button } from "../components/Button";
-import { UserContext } from "../context/UserContext";
+import { Content, TextField } from "../../components";
+import { Button } from "../../components/Button";
+import { UserContext } from "../../context/UserContext";
 import { Navigate, useNavigate } from "react-router-dom";
 
 export const ProfileSignInPage = () => {
@@ -15,7 +15,7 @@ export const ProfileSignInPage = () => {
   }, []);
 
   return (
-    <Content title="Profil">
+    <Content title="Profil - logowanie">
       {isLogin ? (
         <Navigate replace to="/profile" />
       ) : (
