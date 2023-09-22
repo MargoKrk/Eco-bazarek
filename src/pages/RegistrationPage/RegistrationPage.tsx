@@ -123,10 +123,10 @@ export const RegistrationPage = () => {
             />
           </div>
           <div className="flex justify-start flex-row-reverse gap-[16px]">
-            <Button variant="contained" type="submit" onClick={() => {}}>
+            <Button variant="contained" type="submit">
               Zapisz
             </Button>
-            <Button variant="text" type="reset" onClick={() => {}}>
+            <Button variant="text" type="reset">
               Reset
             </Button>
           </div>

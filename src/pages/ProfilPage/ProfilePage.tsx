@@ -1,9 +1,5 @@
-// import { useState } from "react";
 import { Content } from "../../components";
 import { Tab } from "@headlessui/react";
-import { FarmData } from "./components/FarmData";
-import { PasswordChange } from "./components/PasswordChange";
-import { YourProducts } from "./components/YourProducts";
 import { TabsPages } from "./utils";
 
 export const ProfilePage = () => {
@@ -15,7 +11,7 @@ export const ProfilePage = () => {
       <Tab.Group>
         <Tab.List>
           {TabsPages.map((page, indx) => (
-            <Tab className="px-[20px] py-[12px] uppercase" key={indx}>
+            <Tab className="px-[20px] py-[12px] mb-[25px] uppercase" key={indx}>
               {page.label}
             </Tab>
           ))}
@@ -24,16 +20,6 @@ export const ProfilePage = () => {
           {TabsPages.map((page, indx) => (
             <Tab.Panel key={indx}>{page.element}</Tab.Panel>
           ))}
-
-          {/* <Tab.Panel>
-            <FarmData />
-          </Tab.Panel>
-          <Tab.Panel>
-            <PasswordChange />
-          </Tab.Panel>
-          <Tab.Panel>
-            <YourProducts />
-          </Tab.Panel> */}
         </Tab.Panels>
       </Tab.Group>
     </Content>
