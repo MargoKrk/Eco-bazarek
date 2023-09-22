@@ -1,5 +1,5 @@
 export const FarmData = () => {
     return (
-        <div>Opis Gospodarstwa</div>
+        <div>Opis Gospodarstwa komponent</div>
     )
 }

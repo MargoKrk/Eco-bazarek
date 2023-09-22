@@ -1,35 +1,39 @@
-import { useState } from "react";
+// import { useState } from "react";
 import { Content } from "../../components";
-import { Tab, TabProps } from "@headlessui/react";
-import { Outlet } from "react-router-dom";
-import { TabsPagesProps } from "./utils";
+import { Tab } from "@headlessui/react";
+import { FarmData } from "./components/FarmData";
+import { PasswordChange } from "./components/PasswordChange";
+import { YourProducts } from "./components/YourProducts";
+import { TabsPages } from "./utils";
 
-export const ProfilePage = ({ tabInfo, onTabChange }: TabProps) => {
-  const [selectedIndex, setSelectedIndex] = useState<number>(0);
+export const ProfilePage = () => {
+  // const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   return (
     <Content title="Profil">
-      <h1>Profil</h1>
-      <Tab.Group
-        selectedIndex={selectedIndex}
-        onChange={(selectedIndex: number) => {
-          setSelectedIndex(selectedIndex);
-          onTabChange(selectedIndex);
-        }}
-      >
-        <Tab.List className="">
-          {tabInfo.map((item: TabsPagesProps) => {
-            <Tab key={item.path} aria-label={item.label} name={item.label}>
-              {item.label}
-            </Tab>;
-          })}
+      <h1 className="mb-[36px] uppercase">Profil</h1>
+      <Tab.Group>
+        <Tab.List>
+          {TabsPages.map((page, indx) => (
+            <Tab className="px-[20px] py-[12px] uppercase" key={indx}>
+              {page.label}
+            </Tab>
+          ))}
         </Tab.List>
         <Tab.Panels>
-          {tabInfo.map((item: TabsPagesProps) => {
-          <Tab.Panel key={item.path} className="bg-pink p-4">
-            <Outlet />
+          {TabsPages.map((page, indx) => (
+            <Tab.Panel key={indx}>{page.element}</Tab.Panel>
+          ))}
+
+          {/* <Tab.Panel>
+            <FarmData />
           </Tab.Panel>
-          })}
+          <Tab.Panel>
+            <PasswordChange />
+          </Tab.Panel>
+          <Tab.Panel>
+            <YourProducts />
+          </Tab.Panel> */}
         </Tab.Panels>
       </Tab.Group>
     </Content>

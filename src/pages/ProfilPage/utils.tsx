@@ -1,30 +1,23 @@
-import { FarmData, PasswordChange, YourProducts } from "../../components";
+import { FarmData } from "./components/FarmData";
+import { PasswordChange } from "./components/PasswordChange";
+import { YourProducts } from "./components/YourProducts";
 
-export interface TabsPagesProps {
-    path: string;
-    label: string;
-    element: React.ReactElement;
-}
-
-export interface TabProps extends TabsPagesProps {
-    tabInfo: TabsPagesProps[];
-    onTabChange: (selectedIndex: number) => void
-}
+// export interface TabProps extends TabsPagesProps {
+//     tabInfo: TabsPagesProps[];
+//     onTabChange: (selectedIndex: number) => void
+// }
 
 export const TabsPages = [
   {
-    path: "../components/farmDataPage",
-    label: "Tab1",
+    label: "Dane Gospodarstwa",
     element: <FarmData />,
   },
   {
-    path: "../components/PasswordChange",
-    label: "Tab2",
+    label: "Zmiana hasła",
     element: <PasswordChange />,
   },
   {
-    path: "../components/YourProducts",
-    label: "Tab3",
+    label: "Twoje Produkty",
     element: <YourProducts />,
   },
 ];
