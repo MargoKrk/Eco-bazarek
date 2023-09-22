@@ -1,6 +1,6 @@
 import { Content } from "../../components";
 import { Tab } from "@headlessui/react";
-import { TabsPages } from "./utils";
+import { TabsPages, tabClassSelected } from "./utils";
 
 export const ProfilePage = () => {
   // const [selectedIndex, setSelectedIndex] = useState<number>(0);
@@ -11,7 +11,8 @@ export const ProfilePage = () => {
       <Tab.Group>
         <Tab.List>
           {TabsPages.map((page, indx) => (
-            <Tab className="px-[20px] py-[12px] mb-[25px] uppercase" key={indx}>
+            <Tab className={({ selected }) => tabClassSelected(selected)
+            } key={indx}>
               {page.label}
             </Tab>
           ))}
