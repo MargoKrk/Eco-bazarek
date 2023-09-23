@@ -3,7 +3,6 @@ import { Tab } from "@headlessui/react";
 import { TabsPages, tabClassSelected } from "./utils";
 
 export const ProfilePage = () => {
-  // const [selectedIndex, setSelectedIndex] = useState<number>(0);
 
   return (
     <Content title="Profil">

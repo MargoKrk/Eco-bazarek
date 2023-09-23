@@ -9,27 +9,30 @@ export const CATEGORIES_HOST =
   "https://api-eko-bazarek.azurewebsites.net/api/products/categories/top";
 
 export const fetchSubscribe = (email: string) => {
-
-    return fetch(HOST + "/subscribe", {
+  return fetch(HOST + "/subscribe", {
     method: "POST",
     body: JSON.stringify({ email }),
     headers: {
       "Content-Type": "application/json",
     },
   });
-
 };
 
-
-export const fetchContact = (email: string, fullName: string, phone: string, theme: string, message: string) => {
+export const fetchContact = (
+  email: string,
+  fullName: string,
+  phone: string,
+  theme: string,
+  message: string
+) => {
   return fetch(HOST + "/contact", {
     method: "POST",
     body: JSON.stringify({ email, fullName, phone, theme, message }),
     headers: {
       "Content-Type": "application/json",
     },
-  })
-}
+  });
+};
 
 export const loginUser = (email: string, password: string) => {
   return fetch(HOST + "/users/login", {
@@ -38,8 +41,8 @@ export const loginUser = (email: string, password: string) => {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-}
+  });
+};
 
 export const createUser = (newUser: CreateUserProfile) => {
   return fetch(HOST + "/users", {
@@ -48,9 +51,8 @@ export const createUser = (newUser: CreateUserProfile) => {
     headers: {
       "Content-Type": "application/json",
     },
-  })
-
-}
+  });
+};
 
 export const createUserAxios = (
   newUser: CreateUserProfile
