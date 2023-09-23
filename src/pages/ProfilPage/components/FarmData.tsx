@@ -15,7 +15,7 @@ export const FarmData = () => {
           <TextField label="Email" required={true} />
           <TextField label="Telefon" required={true} />
         </div>
-        <h3 className="uppercase mb-[35px]">adres i informacje o gospodarstwie</h3>
+        <h3 className="uppercase my-[35px]">adres i informacje o gospodarstwie</h3>
         <div className="grid gap-y-[34px]">
           <TextField label="Nazwa gospodarstwa" required={true} />
           <TextAreaField className="h-[108px]" label="Opis gospodarstwa" />

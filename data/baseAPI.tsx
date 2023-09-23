@@ -58,3 +58,16 @@ export const createUserAxios = (
   newUser: CreateUserProfile
 ): Promise<AxiosResponse<unknown, unknown>> =>
   axios.post(HOST + "/users", newUser);
+
+
+  export const changePassword = (token: string, oldPassword:string, newPassword:string) => {
+    return fetch(HOST + "/users/change-password", {
+      method: "PUT",
+      body: JSON.stringify({ oldPassword, newPassword }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer" + token
+      },
+  
+    })
+  }

@@ -8,7 +8,7 @@ export interface PasswordValidatorProps
 }
 
 export const PasswordValidator = (props: PasswordValidatorProps) => {
-  const { password, onValidationStatusChange } = props;
+  const { className, password, onValidationStatusChange } = props;
   const passwordLength = password.length >= 8;
   const bigMark = [...password].some((x) => x.match(/^[A-Z]*$/));
   const oneNumber = [...password].some((x) => x.match(/^[0-9]*$/));
@@ -30,7 +30,7 @@ export const PasswordValidator = (props: PasswordValidatorProps) => {
   ]);
 
   return (
-    <div>
+    <div className={className}>
       <FormLabel label="Hasło musi spełniać następujące wymagania:"/>
         <ul>
           <ValidationItem isValid={passwordLength} message="Przynajmniej 8 znaków" />
