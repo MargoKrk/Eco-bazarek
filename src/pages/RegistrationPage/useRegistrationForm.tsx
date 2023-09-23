@@ -95,5 +95,6 @@ export const useRegistrationForm = () => {
     handleSubmit,
     handleReset,
     getTextFieldProps,
+    formData,
   };
 };

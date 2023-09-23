@@ -4,7 +4,7 @@ import { LabelHTMLAttributes } from "react";
 export interface FormLabelProps extends LabelHTMLAttributes<HTMLLabelElement> {
   className?: string;
   label: string;
-  required: boolean;
+  required?: boolean;
 }
 
 export const FormLabel = (props: FormLabelProps) => {

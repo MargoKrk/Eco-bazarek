@@ -1,4 +1,5 @@
-import { Content, TextAreaField, TextField } from "../../components";
+import { useDeferredValue } from "react";
+import { Content, PasswordValidator, TextAreaField, TextField } from "../../components";
 import { Button } from "../../components/Button";
 import { useRegistrationForm } from "./useRegistrationForm";
 
@@ -8,11 +9,13 @@ export const RegistrationPage = () => {
     handleSubmit,
     handleReset,
     getTextFieldProps,
+    formData,
   } = useRegistrationForm();
 
+const password = useDeferredValue(formData.password)
 
   return (
-    <Content title="Produkty">
+    <Content title="Rejestracja">
       <h1 className="uppercase mt-[72px] mb-[34px]">rejestracja</h1>
         <form
           className="flex flex-col w-[690px] gap-y-[34px] mb-[113px]"
@@ -59,6 +62,7 @@ export const RegistrationPage = () => {
                 type: "password",
               }}
             />
+            <PasswordValidator password={password}/>
           </div>
           <h3 className="uppercase">adres i informacje o gospodarstwie</h3>
           <TextField
