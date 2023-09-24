@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { ReactNode, createContext, useState } from "react";
 import { loginUser } from "../../data/baseAPI";
 import { toast } from "react-toastify";
 import { LoginUserResponse, UserProfile } from "../../data/types";
