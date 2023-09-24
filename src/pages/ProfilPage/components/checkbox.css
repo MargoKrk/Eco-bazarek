@@ -1,0 +1,11 @@
+input[type="checkbox"] {
+    @apply hidden
+}
+
+input[type="checkbox"] + label {
+    @apply relative pl-[24px]
+}
+
+input[type="checkbox"] + label:before {
+    @apply content-[""] absolute block w-[16px] h-[16px] border-2 border-[#707070] rounded-[4px] top-0 left-0
+}

@@ -34,3 +34,7 @@ export interface UserProfile {
     repeatPassword: string;
   }
 
+export interface BaseType {
+  id: string;
+  name: string;
+}

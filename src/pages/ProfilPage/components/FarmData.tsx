@@ -1,5 +1,12 @@
+import { UserProfile } from "../../../../data/types";
 import { TextAreaField, TextField } from "../../../components";
 import { Button } from "../../../components/Button";
+
+export interface FarmDataProps {
+  user: UserProfile;
+  token: string;
+  
+}
 
 export const FarmData = () => {
   return (

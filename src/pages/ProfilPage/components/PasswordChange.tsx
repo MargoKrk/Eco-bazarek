@@ -22,11 +22,11 @@ export const PasswordChange = (props: PasswordChangeProps) => {
   // useEffect(() => {
   //   let readFromLocalStorage = localStorage["userLogin"]
   //   let parseLocalStorage = JSON.parse(readFromLocalStorage)
-  //   setToken(parseLocalStorage.token)
-  //   console.log(parseLocalStorage)
+  //   setToken(JSON.stringify(parseLocalStorage.token))
+  //   console.log()
   // }, [])
 
-// console.log(token)
+console.log(token)
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
