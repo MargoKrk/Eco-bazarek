@@ -32,8 +32,8 @@ export const UserProvider = (props: { children: ReactNode }) => {
     setLogining(true);
     setToken(localData.token);
     setProfile(localData.user);
-    toast("Jesteś zalogowany", {type: "success"});
-    console.log(localData)
+    toast("Jesteś zalogowany", { type: "success" });
+    console.log(localData);
   };
 
   const login = async (email: string, password: string) => {
@@ -46,11 +46,13 @@ export const UserProvider = (props: { children: ReactNode }) => {
         if (data.status !== 200) {
           toast("Zły email lub hasło", { type: "error" });
         }
-        const jsonData: LoginUserResponse = await data.json();
-        setToken(jsonData.token);
-        setProfile(jsonData.user);
-        toast("Jesteś zalogowany", {type: "success"});
-        localStorage.setItem("userLogin", JSON.stringify(jsonData));
+        if (data.ok) {
+          const jsonData: LoginUserResponse = await data.json();
+          setToken(jsonData.token);
+          setProfile(jsonData.user);
+          toast("Jesteś zalogowany", { type: "success" });
+          localStorage.setItem("userLogin", JSON.stringify(jsonData));
+        }
       } catch (error) {
         alert(error);
         toast("Zły email lub hasło", { type: "error" });

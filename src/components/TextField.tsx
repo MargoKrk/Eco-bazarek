@@ -50,7 +50,6 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
 
     const toggleInput = () => {
       setInputType(inputType === "password" ? "text" : "password")
-      console.log("klikam")
     }
 
     return (
