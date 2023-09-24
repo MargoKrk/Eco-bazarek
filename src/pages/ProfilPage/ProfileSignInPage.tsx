@@ -36,8 +36,9 @@ export const ProfileSignInPage = () => {
               className="mt-2 w-[515px]"
               label="Hasło"
               required={true}
+              password={true}
+              type={"password"}  
               inputProps={{
-                type: "password",
                 value: password,
                 onChange: (e) => setPassword(e.target.value),
               }}

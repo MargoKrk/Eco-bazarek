@@ -40,8 +40,9 @@ export const PasswordChange = (props: PasswordChangeProps) => {
           <TextField
             label="Stare hasło"
             required={true}
+            password={true}
+            type={"password"}
             inputProps={{
-              type: "password",
               value: oldPassword,
               onChange: (e) => setOldPassword(e.target.value),
             }}
@@ -50,8 +51,9 @@ export const PasswordChange = (props: PasswordChangeProps) => {
           <TextField
             label="Nowe hasło"
             required={true}
+            password={true}
+            type={"password"}
             inputProps={{
-              type: "password",
               value: newPassword,
               onChange: (e) => setNewPassword(e.target.value),
             }}
@@ -59,10 +61,11 @@ export const PasswordChange = (props: PasswordChangeProps) => {
           <TextField
             label="Powtórz nowe hasło"
             required={true}
+            password={true}
+            type={"password"}
             error={!samePassword}
             helperText={!samePassword ? "Hasła muszą być takie same" : ""}
             inputProps={{
-              type: "password",
               value: repeatNewPassword,
               onChange: (e) => {
                 setRepeatNewPassword(e.target.value), setSamePassword(true);

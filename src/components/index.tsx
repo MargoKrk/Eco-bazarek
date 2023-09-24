@@ -6,5 +6,6 @@ export { FloatingButton } from "./FloatingButton";
 export { TextAreaField } from "./TextAreaField";
 export { FormLabel } from "./FormLabel";
 export { FormHelperText } from "./FormHelperText";
-export {PasswordValidator} from "./PasswordValidator";
-export {ValidationItem} from "./ValidationItem";
+export { PasswordValidator } from "./PasswordValidator";
+export { ValidationItem } from "./ValidationItem";
+export { PasswordItem } from "./PasswordItem";

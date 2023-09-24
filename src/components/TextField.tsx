@@ -4,8 +4,9 @@ import {
   InputHTMLAttributes,
   RefObject,
   forwardRef,
+  useState,
 } from "react";
-import { FormHelperText, FormLabel } from ".";
+import { FormHelperText, FormLabel, PasswordItem } from ".";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {}
 
@@ -20,6 +21,8 @@ export interface TextFieldProps
   required?: boolean;
   helperText?: string;
   error?: boolean;
+  password?:boolean;
+  type?: string;
   inputRef?: RefObject<HTMLInputElement>;
 }
 
@@ -34,12 +37,21 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
       helperText,
       classNameHelperText,
       error = false,
+      password=false,
+      type,
       inputProps = {},
       inputRef,
       ...other
     } = props;
 
     const { className: classNameInput, ...otherInput } = inputProps;
+    const [inputType, setInputType] = useState("password")
+
+
+    const toggleInput = () => {
+      setInputType(inputType === "password" ? "text" : "password")
+      console.log("klikam")
+    }
 
     return (
       <div
@@ -54,13 +66,16 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
         />
         <input
           ref={inputRef}
+          type={inputType}
           className={clsx(
             className,
             "h-[42px] w-full text-black rounded-[2px] p-2 focus:outline-none",
             error ? "bg-red-200 border-2 border-red-300" : "bg-white"
           )}
           {...otherInput}
-        />
+        />{password && (
+          <PasswordItem toggleInput={toggleInput}/>
+        )}
         {helperText && (
           <FormHelperText
             helperText={helperText}
