@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { LoginUserResponse, UserProfile } from "../data/types";
 import { useAPI } from "../data/useAPI";
@@ -9,7 +9,8 @@ export interface UserContextProps {
   isLogin: boolean;
   logining: boolean;
   login: (email: string, password: string) => void;
-  checkLocalStorage: () => void;
+  setUserProfile: (token: string, profile: UserProfile) => void;
+  checkLocalStorage: () => void
 }
 
 export const UserContext = createContext<UserContextProps>({
@@ -18,8 +19,12 @@ export const UserContext = createContext<UserContextProps>({
   isLogin: false,
   logining: false,
   login: () => {},
-  checkLocalStorage: () => {},
+  setUserProfile: () => {},
+  checkLocalStorage: () => {}
 });
+
+const TokenStorageKey = "userToken";
+const ProfileStorageKey = "userLogin";
 
 export const UserProvider = (props: { children: ReactNode }) => {
   const [logining, setLogining] = useState(false);
@@ -27,14 +32,24 @@ export const UserProvider = (props: { children: ReactNode }) => {
   const [profile, setProfile] = useState<UserProfile | null>(null);
   const { loginUser } = useAPI();
 
+  const checkLocalStorage = () => {
+    const localData = localStorage.getItem(ProfileStorageKey);
+    const profile = localData ? (JSON.parse(localData) as UserProfile) : null;
+    const localToken = localStorage.getItem(TokenStorageKey);
+    if (localToken && profile) {
+      setToken(localToken);
+      setProfile(profile);
+      toast("Jesteś zalogowany", { type: "info" });
+      console.log(profile, localToken);
+      setLogining(true);
+    }
+  };
 
-  const checkLocalStorage = async () => {
-    const localData = await JSON.parse(localStorage.getItem("userLogin") || "");
-    setLogining(true);
-    setToken(localData.token);
-    setProfile(localData.user);
-    toast("Jesteś zalogowany", { type: "success" });
-    console.log(localData);
+  const setUserProfile = (token: string, profile: UserProfile) => {
+    setProfile(profile);
+    setToken(token);
+    localStorage.setItem(TokenStorageKey, token);
+    localStorage.setItem(ProfileStorageKey, JSON.stringify(profile));
   };
 
   const login = async (email: string, password: string) => {
@@ -49,10 +64,11 @@ export const UserProvider = (props: { children: ReactNode }) => {
         }
         if (data.ok) {
           const jsonData: LoginUserResponse = await data.json();
-          setToken(jsonData.token);
-          setProfile(jsonData.user);
+          const { token, user } = jsonData;
+          setToken(token);
+          setProfile(user);
           toast("Jesteś zalogowany", { type: "success" });
-          localStorage.setItem("userLogin", JSON.stringify(jsonData));
+          setUserProfile(token, user);
         }
       } catch (error) {
         alert(error);
@@ -73,6 +89,7 @@ export const UserProvider = (props: { children: ReactNode }) => {
         profile,
         isLogin: Boolean(profile),
         login,
+        setUserProfile,
         checkLocalStorage,
       }}
     >
