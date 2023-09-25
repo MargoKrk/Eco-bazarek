@@ -53,6 +53,7 @@ export const useAPI = () => {
       newUser: CreateUserProfile
     ): Promise<AxiosResponse<unknown, unknown>> =>
       axios.post(HOST + "/users", newUser),
+
     changePassword: (oldPassword: string, newPassword: string) => {
       if (!token) throw new Error("Nie ma tokenu :(");
       return fetch(HOST + "/users/change-password", {
@@ -64,6 +65,8 @@ export const useAPI = () => {
         },
       });
     },
+
+    
     loadUser: (user: UserProfile) => {
       if (!token) throw new Error("Nie ma tokenu :(");
       return fetch(HOST + "/users", {

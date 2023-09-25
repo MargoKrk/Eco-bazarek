@@ -1,9 +1,9 @@
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { PasswordValidator, TextField } from "../../../components";
 import { Button } from "../../../components/Button";
-// import { changePassword } from "../../../data/baseAPI";
 import { toast } from "react-toastify";
 import { useAPI } from "../../../data/useAPI";
+import { UserContext } from "../../../context/UserContext";
 
 // export interface PasswordChangeProps {
 //   token: string;
@@ -15,18 +15,11 @@ export const PasswordChange = () => {
   const [repeatNewPassword, setRepeatNewPassword] = useState("");
   const [samePassword, setSamePassword] = useState(true);
   const { changePassword } = useAPI();
+  const { token } = useContext(UserContext);
+
+  console.log(token)
 
 
-  // const [token, setToken] = useState("")
-
-  // useEffect(() => {
-  //   let readFromLocalStorage = localStorage["userLogin"]
-  //   let parseLocalStorage = JSON.parse(readFromLocalStorage)
-  //   setToken(JSON.stringify(parseLocalStorage.token))
-  //   console.log()
-  // }, [])
-
-  // console.log(token);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -38,11 +31,11 @@ export const PasswordChange = () => {
         const data = await changePassword(oldPassword, newPassword);
         console.log(oldPassword, newPassword);
 
-        if (data.status !== 200) {
-          toast("Nie udało się zmienić hasła", { type: "error" });
+        if (data.ok) {
+          toast("Hasło zostało zmienione", { type: "success" });
           console.log("status błąd")
         } else {
-          toast("Hasło zostało zmienione", { type: "success" });
+          toast("Nie udało się zmienić hasła", { type: "error" });
         }
       } catch (err) {
         toast("Nie udało się zmienić hasła", { type: "error" });
