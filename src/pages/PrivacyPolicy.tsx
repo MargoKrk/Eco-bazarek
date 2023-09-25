@@ -1,18 +1,10 @@
-import { useState } from "react";
 import { Content } from "../components";
 
 export const PrivacyPolicyPage = () => {
-  const [isLoading, setIsLoading] = useState(true);
-
-  const allLoadEvent = () => {
-    setIsLoading(false);
-  };
 
   return (
     <Content
       title="Polityka prywatności"
-      onLoad={allLoadEvent}
-      loading={isLoading}
     >
       <h1 className="pb-10">Polityka prywatności</h1>
       <p className="text-justify">

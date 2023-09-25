@@ -38,7 +38,6 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
       classNameHelperText,
       error = false,
       password=false,
-      type,
       inputProps = {},
       inputRef,
       ...other

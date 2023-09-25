@@ -1,14 +1,13 @@
 import { ReactNode, createContext, useState } from "react";
-import { loginUser } from "../../data/baseAPI";
 import { toast } from "react-toastify";
-import { LoginUserResponse, UserProfile } from "../../data/types";
+import { LoginUserResponse, UserProfile } from "../data/types";
+import { useAPI } from "../data/useAPI";
 
 export interface UserContextProps {
   token: string | null;
   profile: UserProfile | null;
   isLogin: boolean;
   logining: boolean;
-  // loginData: UserProfile | null;
   login: (email: string, password: string) => void;
   checkLocalStorage: () => void;
 }
@@ -26,6 +25,8 @@ export const UserProvider = (props: { children: ReactNode }) => {
   const [logining, setLogining] = useState(false);
   const [token, setToken] = useState<string | null>(null);
   const [profile, setProfile] = useState<UserProfile | null>(null);
+  const { loginUser } = useAPI();
+
 
   const checkLocalStorage = async () => {
     const localData = await JSON.parse(localStorage.getItem("userLogin") || "");

@@ -8,41 +8,6 @@ export const HOST = "https://api-eko-bazarek.azurewebsites.net/api";
 export const CATEGORIES_HOST =
   "https://api-eko-bazarek.azurewebsites.net/api/products/categories/top";
 
-export const fetchSubscribe = (email: string) => {
-  return fetch(HOST + "/subscribe", {
-    method: "POST",
-    body: JSON.stringify({ email }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
-
-export const fetchContact = (
-  email: string,
-  fullName: string,
-  phone: string,
-  theme: string,
-  message: string
-) => {
-  return fetch(HOST + "/contact", {
-    method: "POST",
-    body: JSON.stringify({ email, fullName, phone, theme, message }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
-
-export const loginUser = (email: string, password: string) => {
-  return fetch(HOST + "/users/login", {
-    method: "POST",
-    body: JSON.stringify({ email, password }),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
 
 export const createUser = (newUser: CreateUserProfile) => {
   return fetch(HOST + "/users", {
@@ -53,11 +18,6 @@ export const createUser = (newUser: CreateUserProfile) => {
     },
   });
 };
-
-export const createUserAxios = (
-  newUser: CreateUserProfile
-): Promise<AxiosResponse<unknown, unknown>> =>
-  axios.post(HOST + "/users", newUser);
 
 
 export const changePassword = (
@@ -76,12 +36,13 @@ export const changePassword = (
 };
 
 export const loadUser = (user: UserProfile, token: string) => {
+  if(!token) throw new Error("Nie ma tokenu")
 return fetch(HOST + "/users", {
 method: "GET", 
 body: JSON.stringify(user),
 headers: {
   "Content-Type": "application/json",
-  Authorization: "Bearer" + token,
+  Authorization: `Bearer ${token}`,
 },
 })
 }

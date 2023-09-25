@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react";
 import { Content, TextAreaField, TextField } from "../components";
 import { Button } from "../components/Button";
-import { fetchContact } from "../../data/baseAPI";
 import { toast } from "react-toastify";
+import { useAPI } from "../data/useAPI";
 
 export const ContactPage = () => {
   const [email, setEmail] = useState<string>("");
@@ -11,6 +11,7 @@ export const ContactPage = () => {
   const [theme, setTheme] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const { fetchContact } = useAPI();
 
   const allLoadEvent = () => {
     setIsLoading(false);
@@ -33,10 +34,15 @@ export const ContactPage = () => {
     }
     if (validErrors.length === 0) {
       try {
-        await fetchContact(email, fullName, phone, theme, message);
+        await toast.promise(fetchContact(email, fullName, phone, theme, message),{
+          pending: "Wysyłanie wiadomości",
+          success: "Twoja wiadomość do nas dotarła!",
+        });
         console.log(email, fullName, phone, theme, message);
       } catch (err) {
         console.log(err);
+      } finally {
+        clearInputs();
       }
     } else {
       validErrors.map((error) => toast(error, { type: "error" }));
@@ -44,14 +50,18 @@ export const ContactPage = () => {
     }
   };
 
-  const handleReset = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const clearInputs = () => {
     setEmail("");
     setFullName("");
     setPhone("");
     setTheme("");
     setMessage("");
+  };
+
+  const handleReset = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    clearInputs();
   };
 
   return (
@@ -75,6 +85,7 @@ export const ContactPage = () => {
             label="Imię i nazwisko"
             required={true}
             inputProps={{
+              type: "text",
               value: fullName,
               placeholder: "Wpisz imię i nazwisko",
               onChange: (e) => setFullName(e.target.value),
@@ -94,6 +105,7 @@ export const ContactPage = () => {
             <TextField
               label="Telefon"
               inputProps={{
+                type: "text",
                 value: phone,
                 placeholder: "Wpisz numer telefonu",
                 onChange: (e) => setPhone(e.target.value),
@@ -105,6 +117,7 @@ export const ContactPage = () => {
               label="Temat"
               required={true}
               inputProps={{
+                type: "text",
                 value: theme,
                 placeholder: "Wpisz temat wiadomości",
                 onChange: (e) => setTheme(e.target.value),

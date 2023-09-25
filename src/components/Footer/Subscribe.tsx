@@ -1,11 +1,12 @@
 import { FormEvent, useState } from "react";
-import { fetchSubscribe } from "../../../data/baseAPI";
 import { toast } from "react-toastify";
 import { Button } from "../Button";
 import { TextField } from "../index";
+import { useAPI } from "../../data/useAPI";
 
 export const Subscribe = () => {
   const [email, setEmail] = useState<string>("");
+  const {fetchSubscribe} = useAPI()
 
   const handleSubscribe = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

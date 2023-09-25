@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { HOST } from "../../../../data/baseAPI";
-import { BaseType, categoriesResult } from "../../../../data/types";
-import "./checkbox.css"
-
+import { HOST } from "../../../data/baseAPI";
+import { BaseType, categoriesResult } from "../../../data/types";
+import "./checkbox.css";
 
 export const YourProducts = () => {
   const [types, setTypes] = useState<BaseType[]>([]);

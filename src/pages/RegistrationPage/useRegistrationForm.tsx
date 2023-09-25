@@ -1,12 +1,12 @@
 import { FormEvent, useState } from "react";
-import { CreateUserProfile } from "../../../data/types";
+import { CreateUserProfile } from "../../data/types";
 import { getDefaultCreateUserProfile } from "./utils";
-import { createUser, createUserAxios } from "../../../data/baseAPI";
 import { InputProps } from "../../components/TextField";
 import { TextAreaProps } from "../../components/TextAreaField";
 import { AxiosError } from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useAPI } from "../../data/useAPI";
 
 export const useRegistrationForm = () => {
   const [formData, setFormData] = useState<CreateUserProfile>(
@@ -14,19 +14,20 @@ export const useRegistrationForm = () => {
   );
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const navigate = useNavigate();
+  const { createUserAxios } = useAPI();
 
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (Object.keys(errors).length < 0) {
-        toast("Wypełnij wszystkie wymagane pola formularza", { type: "error" });
-      }
+      toast("Wypełnij wszystkie wymagane pola formularza", { type: "error" });
+    }
 
     try {
       const { data } = await createUserAxios(formData);
       console.log(data);
-      navigate("/profile")
+      navigate("/profile");
     } catch (err) {
       const error = err as AxiosError<{
         inner: { path: string; message: string }[];
@@ -61,16 +62,16 @@ export const useRegistrationForm = () => {
       setFormData((prev) => ({ ...prev, [key]: e.target.value }));
     },
     onBlur: (e) => {
-        if(key === "repeatPassword") {
-            const value = e.target.value
-            if(value !== formData.password) {
-                setErrors((prev) => {
-                    prev[key] = "Hasła muszą być takie same"
-                    return {...prev}
-                })
-            }
+      if (key === "repeatPassword") {
+        const value = e.target.value;
+        if (value !== formData.password) {
+          setErrors((prev) => {
+            prev[key] = "Hasła muszą być takie same";
+            return { ...prev };
+          });
         }
-    }
+      }
+    },
   });
 
   const handleReset = () => {

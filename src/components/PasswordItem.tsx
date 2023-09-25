@@ -14,7 +14,7 @@ export const PasswordItem = (props: PasswordItemProps) => {
     const{classNameDiv, toggleInput} = props
 
     return (
-        <div className={clsx("w-6 h-6 top-[-35px] relative right-[-480px]", classNameDiv)}>
+        <div className={clsx("w-6 h-6 top-[-35px] relative right-[-480px] cursor-pointer", classNameDiv)}>
             <FontAwesomeIcon 
             icon={faEye} 
             className="w-6 h-6 text-[#00000029] absolute"

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { CATEGORIES_HOST } from "../../data/baseAPI";
+import { CATEGORIES_HOST } from "../data/baseAPI";
 import { Content, FloatingButton } from "../components";
 import HomeImage from "../images/hero-image.png";
-import { categoriesResult } from "../../data/types";
+import { categoriesResult } from "../data/types";
 
 export const HomePage = () => {
   const [categories, setCategories] = useState<categoriesResult[]>([]);

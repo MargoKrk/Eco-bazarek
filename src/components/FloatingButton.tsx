@@ -14,7 +14,7 @@ export const FloatingButton = () => {
     }
 
   return (
-    <div className="flex justify-center items-center w-[42px] h-[42px] bg-[#46AA42] rounded-full fixed right-[27px] top-[624px]">
+    <div className="flex justify-center items-center w-[42px] h-[42px] bg-[#46AA42] rounded-full fixed right-[27px] top-[624px] cursor-pointer">
       <FontAwesomeIcon
         icon={faChevronUp}
         className="w-[30px] h-[16px] text-white"

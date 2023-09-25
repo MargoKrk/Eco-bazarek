@@ -1,22 +1,22 @@
 import { FormEvent, useEffect, useState } from "react";
-import {
-  PasswordValidator,
-  TextField,
-} from "../../../components";
+import { PasswordValidator, TextField } from "../../../components";
 import { Button } from "../../../components/Button";
-import { changePassword } from "../../../../data/baseAPI";
+// import { changePassword } from "../../../data/baseAPI";
 import { toast } from "react-toastify";
+import { useAPI } from "../../../data/useAPI";
 
-export interface PasswordChangeProps {
-  token: string;
-}
+// export interface PasswordChangeProps {
+//   token: string;
+// }
 
-export const PasswordChange = (props: PasswordChangeProps) => {
-  const {token} = props;
+export const PasswordChange = () => {
   const [oldPassword, setOldPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [repeatNewPassword, setRepeatNewPassword] = useState("");
   const [samePassword, setSamePassword] = useState(true);
+  const { changePassword } = useAPI();
+
+
   // const [token, setToken] = useState("")
 
   // useEffect(() => {
@@ -26,26 +26,27 @@ export const PasswordChange = (props: PasswordChangeProps) => {
   //   console.log()
   // }, [])
 
-console.log(token)
+  // console.log(token);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
 
     if (!newPassword || !repeatNewPassword || samePassword === false) {
       toast("Wypełnij poprawnie wszystkie pola", { type: "error" });
     } else {
       try {
-        const data = await changePassword(token, oldPassword, newPassword);
-        console.log(token, oldPassword, newPassword)
+        const data = await changePassword(oldPassword, newPassword);
+        console.log(oldPassword, newPassword);
 
-        if(data.status !== 200) {
+        if (data.status !== 200) {
           toast("Nie udało się zmienić hasła", { type: "error" });
+          console.log("status błąd")
         } else {
           toast("Hasło zostało zmienione", { type: "success" });
         }
       } catch (err) {
         toast("Nie udało się zmienić hasła", { type: "error" });
+        console.log(err)
       }
     }
   };
@@ -58,7 +59,7 @@ console.log(token)
             label="Stare hasło"
             required={true}
             password={true}
-            type={"password"}
+            type="password"
             inputProps={{
               value: oldPassword,
               onChange: (e) => setOldPassword(e.target.value),
