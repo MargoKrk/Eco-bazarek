@@ -66,12 +66,9 @@ export const useAPI = () => {
       });
     },
 
-    
-    loadUser: (user: UserProfile) => {
+    downloadUser: (token:string) => {
       if (!token) throw new Error("Nie ma tokenu :(");
-      return fetch(HOST + "/users", {
-        method: "GET",
-        body: JSON.stringify(user),
+      return fetch(HOST + "/users/me", {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,

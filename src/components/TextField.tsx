@@ -17,6 +17,7 @@ export interface TextFieldProps
   classNameDiv?: string;
   classNameLabel?: string;
   classNameHelperText?: string;
+  classNameItem?: string
   label?: string;
   required?: boolean;
   helperText?: string;
@@ -32,6 +33,7 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
       className,
       classNameDiv,
       classNameLabel,
+      classNameItem,
       label,
       required = false,
       helperText,
@@ -72,7 +74,7 @@ export const TextField = forwardRef<HTMLDivElement, TextFieldProps>(
           )}
           {...otherInput}
         />{password && (
-          <PasswordItem toggleInput={toggleInput}/>
+          <PasswordItem toggleInput={toggleInput} className={classNameItem}/>
         )}
         {helperText && (
           <FormHelperText

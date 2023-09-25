@@ -1,5 +1,4 @@
 import { CreateUserProfile, UserProfile } from "./types";
-import axios, { AxiosResponse } from "axios";
 
 export const HOST = "https://api-eko-bazarek.azurewebsites.net/api";
 
@@ -15,22 +14,6 @@ export const createUser = (newUser: CreateUserProfile) => {
     body: JSON.stringify({ ...newUser }),
     headers: {
       "Content-Type": "application/json",
-    },
-  });
-};
-
-
-export const changePassword = (
-  token: string,
-  oldPassword: string,
-  newPassword: string
-) => {
-  return fetch(HOST + "/users/change-password", {
-    method: "POST",
-    body: JSON.stringify({ oldPassword, newPassword }),
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer" + token,
     },
   });
 };

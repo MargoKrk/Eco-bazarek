@@ -1,13 +1,9 @@
-import { FormEvent, useContext, useEffect, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { PasswordValidator, TextField } from "../../../components";
 import { Button } from "../../../components/Button";
 import { toast } from "react-toastify";
 import { useAPI } from "../../../data/useAPI";
 import { UserContext } from "../../../context/UserContext";
-
-// export interface PasswordChangeProps {
-//   token: string;
-// }
 
 export const PasswordChange = () => {
   const [oldPassword, setOldPassword] = useState("");
@@ -19,8 +15,6 @@ export const PasswordChange = () => {
 
   console.log(token)
 
-
-
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -29,17 +23,17 @@ export const PasswordChange = () => {
     } else {
       try {
         const data = await changePassword(oldPassword, newPassword);
-        console.log(oldPassword, newPassword);
 
         if (data.ok) {
           toast("Hasło zostało zmienione", { type: "success" });
-          console.log("status błąd")
+          setOldPassword("")
+          setNewPassword("")
+          setRepeatNewPassword("")
         } else {
           toast("Nie udało się zmienić hasła", { type: "error" });
         }
       } catch (err) {
         toast("Nie udało się zmienić hasła", { type: "error" });
-        console.log(err)
       }
     }
   };
